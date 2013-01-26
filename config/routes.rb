@@ -1,8 +1,5 @@
 Todo::Application.routes.draw do
   resources :microposts
-
-
-  resources :microposts
   resources :users
 
 
