@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125153426) do
+ActiveRecord::Schema.define(:version => 20130210215211) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "comment"
+    t.integer  "task_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -20,9 +27,56 @@ ActiveRecord::Schema.define(:version => 20130125153426) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "users", :force => true do |t|
+  create_table "projects", :force => true do |t|
+    t.string   "projectname"
+    t.string   "project"
+    t.string   "description"
+    t.date     "startdate"
+    t.date     "enddate"
+    t.time     "starttime"
+    t.time     "endtime"
+    t.string   "overallcomments"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
     t.string   "name"
+    t.string   "description"
+    t.date     "duedate"
+    t.string   "importance"
+    t.string   "status"
+    t.string   "produceddocuments"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "user_profiles", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.string   "email"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_roles", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "role_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

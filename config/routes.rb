@@ -1,4 +1,22 @@
 Todo::Application.routes.draw do
+  resources :tasks
+
+
+  resources :comments
+
+
+  resources :projects
+
+
+  resources :user_profiles
+
+
+  resources :user_roles
+
+
+  resources :users
+
+
   get "static_pages/user"
 
   get "static_pages/project"
@@ -10,9 +28,6 @@ Todo::Application.routes.draw do
   get "static_pages/help"
 
   resources :microposts
-  resources :users
-
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
