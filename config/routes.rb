@@ -1,4 +1,10 @@
 Todo::Application.routes.draw do
+  get "static_pages/user"
+
+  get "static_pages/project"
+
+  get "static_pages/report"
+
   get "static_pages/home"
 
   get "static_pages/help"

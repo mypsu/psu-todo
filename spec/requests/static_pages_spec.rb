@@ -1,11 +1,23 @@
 require 'spec_helper'
 
 describe "StaticPages" do
-  describe "GET /static_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get static_pages_index_path
-      response.status.should be(200)
+
+  describe "Reports Page" do
+    it "should have content in reports page" do
+	visit '/static_pages/report'
+	page.should have_content('Reports')
+    end
+  end
+  describe "Projects Page" do
+    it "should have content in home page" do
+	visit '/static_pages/project'
+	page.should have_content('Projects')
+    end
+  end
+  describe "User Page" do
+    it "should have content in home page" do
+	visit '/static_pages/user'
+	page.should have_content('Users')
     end
   end
 end

@@ -2,16 +2,23 @@ require 'spec_helper'
 
 describe StaticPagesController do
 
-  describe "GET 'home'" do
+  describe "GET 'user'" do
     it "returns http success" do
-      get 'home'
+      get 'user'
       response.should be_success
     end
   end
 
-  describe "GET 'help'" do
+  describe "GET 'project'" do
     it "returns http success" do
-      get 'help'
+      get 'project'
+      response.should be_success
+    end
+  end
+
+  describe "GET 'report'" do
+    it "returns http success" do
+      get 'report'
       response.should be_success
     end
   end
