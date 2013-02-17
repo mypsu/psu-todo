@@ -1,4 +1,8 @@
 Todo::Application.routes.draw do
+  get "persons/new"
+
+  resources :persons
+
   resources :tasks
 
 
