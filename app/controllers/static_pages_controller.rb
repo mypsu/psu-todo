@@ -5,6 +5,6 @@ class StaticPagesController < ApplicationController
   def project
   end
 
-  def report
+  def task 
   end
 end

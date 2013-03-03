@@ -1,37 +1,27 @@
 Todo::Application.routes.draw do
+  root to: 'static_pages#home'
+
   get "persons/new"
 
   resources :persons
-
   resources :tasks
-
-
   resources :comments
-
-
   resources :projects
-
-
   resources :user_profiles
-
-
   resources :user_roles
-
-
   resources :users
 
-
-  get "static_pages/user"
-
-  get "static_pages/project"
-
-  get "static_pages/report"
-
   get "static_pages/home"
+  #get "static_pages/project"
+  #get "static_pages/task"
+  #get "static_pages/user"
 
-  get "static_pages/help"
+  match '/createaccount', to: 'users#new'
+  match '/', to:  'static_pages#home'
+  #match '/user', to:  'static_pages#user'
+  #match '/project', to:  'static_pages#project'
+  #match '/task', to:  'static_pages#task'
 
-  resources :microposts
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

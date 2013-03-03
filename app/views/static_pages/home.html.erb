@@ -5,9 +5,9 @@
     <title>ToDo <%= yield(:title) %></title>
   </head>
   <body>
-    <h1>PSU To Do Projects</h1>
+    <h1>To Do Projects</h1>
     <p>
-	An application by PSU SWENG Team #4
+	<%=link_to "Create Account", createaccount_path, class: "btn btn-medium btn-primary" %>
     </p>
   </body>
 </html>

@@ -7,10 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div><a href="/users">Users</a> | <a href="/user_profiles">User Profiles </a> | <a href="/projects">Projects</a> | 
-<a href="/tasks">Tasks</a> | <a href="/comments">Comments</a> 
-</div>
+<header class ="navbar navbar-fixed-top">
+	<div class = "navbar-inner">
+		<div class = "container">
+			<nav>
+				<%= link_to "Home", '#' %> |
+				<%= link_to "Projects", '#' %> | 
+				<%= link_to "MyTasks", '#' %> | 
+				<%= link_to "Users", '#' %> 
+			</nav>	
+		</div>
+	</div>
+</header>
+<div class = "container">
 <%= yield %>
+<%= render 'layouts/footer' %>
+</div>
 
 </body>
 </html>
