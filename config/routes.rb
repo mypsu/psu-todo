@@ -17,7 +17,7 @@ Todo::Application.routes.draw do
   #get "static_pages/user"
 
   match '/createaccount', to: 'users#new'
-  match '/', to:  'static_pages#home'
+  match '/', to:  'home'
   #match '/user', to:  'static_pages#user'
   #match '/project', to:  'static_pages#project'
   #match '/task', to:  'static_pages#task'
