@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  owner: MyString
+  start_date: 2013-03-09
+  end_date: 2013-03-09
+  taskList: MyString
+
+two:
+  owner: MyString
+  start_date: 2013-03-09
+  end_date: 2013-03-09
+  taskList: MyString
