@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :completed %><br />
-    <%= f.text_field :completed %>
+    <%= f.select :completed, [['Yes','YES'],['No','NO']] %>
   </div>
   <div class="actions">
     <%= f.submit %>
