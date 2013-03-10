@@ -10,9 +10,12 @@ PsuTodo::Application.routes.draw do
   root to: 'static_pages#home'
 
   match '/home', to: 'static_pages#home'
-  match '/register', to: 'users#new'
   match '/project', to: 'projects#new'
   match '/user', to: 'users#show'
+
+  match '/register', to: 'users#new'
+  match '/login', to: 'session#new'
+  match '/logout', to: 'session#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

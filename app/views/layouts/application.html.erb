@@ -8,13 +8,13 @@
 </head>
 <body>
 	
-            <ul>
-              <li><%= link_to "Home",    '/home' %></li>
-              <li><%= link_to "Project",    '/projects' %></li>
-              <li><%= link_to "Users",    '/users' %></li>
-            </ul>
+              <%= link_to "Home",    '/home' %>
+              <%= link_to "Project",    '/projects' %>
+              <%= link_to "Users",    '/users' %>
 
 <%= yield %>
+<%= debug(params) if Rails.env.development? %>
 
+<h5>PSU Team 4 SWENG 500</h5>
 </body>
 </html>
