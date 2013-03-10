@@ -1,14 +1,17 @@
 PsuTodo::Application.routes.draw do
   get "static_pages/home"
-
   get "static_pages/about"
-
-  get "static_pages/homeabout"
 
   resources :tasks
   resources :projects
   resources :users
 
+  root to: 'static_pages#home'
+
+  match '/home', to: 'static_pages#home'
+  match '/register', to: 'users#new'
+  match '/project', to: 'projects#new'
+  match '/user', to: 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
