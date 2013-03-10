@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.username = username.downcase }
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true, length: {minimum: 6}
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
   private
 	def create_remember_token

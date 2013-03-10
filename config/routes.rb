@@ -1,4 +1,7 @@
 PsuTodo::Application.routes.draw do
+  resources :projects
+
+
   get "static_pages/home"
   get "static_pages/about"
 
@@ -9,7 +12,7 @@ PsuTodo::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/home', to: 'static_pages#home'
+  match '/home', to: 'sessions#new'
   match '/project', to: 'projects#new'
   match '/user', to: 'users#show'
 

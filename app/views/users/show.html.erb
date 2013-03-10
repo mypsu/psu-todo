@@ -12,5 +12,13 @@
   <b>Created</b>
   <%= @user.created_at %>
 </p>
+
+ <% if @user.projects.any? %>
+      <h3># of Projects (<%= @user.projects.count %>)</h3>
+	<%= render @projects %>	
+	<%= will_paginate @projects %>	
+    <% else %>
+	<h3>no projects</h3>
+    <% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

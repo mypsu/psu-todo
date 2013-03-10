@@ -2,12 +2,18 @@
 
 one:
   owner: MyString
-  start_date: 2013-03-09
-  end_date: 2013-03-09
+  userid: 1
+  name: MyString
+  description: MyString
+  start_date: 2013-03-11
+  end_date: 2013-03-11
   taskList: MyString
 
 two:
   owner: MyString
-  start_date: 2013-03-09
-  end_date: 2013-03-09
+  userid: 1
+  name: MyString
+  description: MyString
+  start_date: 2013-03-11
+  end_date: 2013-03-11
   taskList: MyString
