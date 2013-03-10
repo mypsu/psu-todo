@@ -29,7 +29,7 @@ group :development, :test do
 end
 
 group :production do
-	gem 'pg'
+	gem 'pg', '0.14.1'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
