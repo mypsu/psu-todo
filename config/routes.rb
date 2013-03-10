@@ -5,6 +5,7 @@ PsuTodo::Application.routes.draw do
   resources :tasks
   resources :projects
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
 
