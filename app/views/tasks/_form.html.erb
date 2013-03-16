@@ -12,9 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :project_id %><br />
+    <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt=>"Select"}) %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+
+
   <div class="field">
     <%= f.label :completed %><br />
     <%= f.select :completed, [['Yes','YES'],['No','NO']] %>

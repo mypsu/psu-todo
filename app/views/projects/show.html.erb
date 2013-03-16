@@ -2,35 +2,30 @@
 
 
 <p>
-  <b>User_id:</b>
-  <%= @project.user_id %>
-</p>
-
-<p>
-  <b>Name:</b>
+  <b>Project Name:</b>
   <%= @project.name %>
-</p>
-
-<p>
   <b>Description:</b>
   <%= @project.description %>
-</p>
-
-<p>
   <b>Start date:</b>
   <%= @project.start_date %>
-</p>
-
-<p>
   <b>End date:</b>
   <%= @project.end_date %>
 </p>
 
 <p>
-  <b>Tasklist:</b>
-  <%= @project.taskList %>
+
+ <% if @project.tasks.any? %>
+       <h3># of Tasks: <%= @project.tasks.count %></h3>
+         <%= render @tasks %> 
+        <%= will_paginate @tasks %>  
+
+
+    <% else %>
+  <h3>no Tasks</h3>
+    <% end %>
+
 </p>
 
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Add Task', new_task_path %> |
+<%= link_to 'Edit Project', edit_project_path(@project) %> |
+<%= link_to 'Return Back', projects_path %>
