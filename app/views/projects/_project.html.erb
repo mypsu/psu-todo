@@ -1,3 +1,5 @@
 <li>
-    <ul><%= project.name %> (Updated: <%= time_ago_in_words(project.created_at) %> ago )</ul>
+    <ul><%= link_to project.name, project %> (Updated: <%= time_ago_in_words(project.created_at) %> ago )</ul>
+
+
 </li>

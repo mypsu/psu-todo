@@ -2,12 +2,12 @@
 
 <table>
   <tr>
-    <th>User_Name</th>
-    <th>Name</th>
+
+    <th>Project Name</th>
     <th>Description</th>
     <th>Start date</th>
     <th>End date</th>
-    <th>Tasklist</th>
+    <th>User_Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,12 +15,11 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.user.username %></td>
     <td><%= project.name %></td>
     <td><%= project.description %></td>
     <td><%= project.start_date %></td>
     <td><%= project.end_date %></td>
-    <td><%= project.taskList %></td>
+    <td><%= project.user.username %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
