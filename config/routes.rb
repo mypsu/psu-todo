@@ -1,4 +1,7 @@
 PsuTodo::Application.routes.draw do
+  resources :taskdeps
+
+
   resources :projects
 
 

@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
+gem 'guard-rspec'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,6 +27,11 @@ gem 'jquery-rails'
 group :development, :test do
 #	gem 'pg'
 	gem 'sqlite3', '1.3.7'
+	gem 'rspec-rails'
+        gem 'guard-rspec'
+	gem 'capybara', '~>1.1.2'
+  	gem "fabrication", "~> 2.2.0"
+  	gem "launchy", "~> 2.1.2"
 end
 
 group :production do
