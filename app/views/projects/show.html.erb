@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing tasks</h1>
+<h1>Project:
+  <%= @project.name %></h1>
 
 <p>
-  <b>Project Name:</b>
-  <%= @project.name %>
   <b>Description:</b>
   <%= @project.description %>
   <b>Start date:</b>
@@ -19,7 +18,6 @@
        <h3># of Tasks: <%= @project.tasks.count %></h3>
          <%= render @tasks %> 
         <%= will_paginate @tasks %>  
-
 
     <% else %>
   <h3>no Tasks</h3>
