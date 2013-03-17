@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   validates :description, :length => {:maximum => 300}
   validates :project_id, presence: true
   belongs_to :project
+#  belongs_to :user, :through => :project
 
   has_many     :parent_child_relationships,
                :class_name            => "taskdep",

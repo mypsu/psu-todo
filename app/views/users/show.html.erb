@@ -18,6 +18,10 @@
     <% else %>
 	<h3>no projects</h3>
     <% end %>
+
+<% @user.tasks %>
+  
+
 <%= link_to 'Create Project', new_project_path %> |
 <%= link_to 'Edit User', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
