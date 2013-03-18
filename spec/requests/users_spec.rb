@@ -17,6 +17,7 @@ describe User do
 
 
   describe "when username is too long" do
+    let(:user) { FactoryGirl.create(:user) }
     before {@user.username = "x" * 60}
     it {should_not be_valid}
   end
@@ -85,6 +86,10 @@ reflection_children = User.reflect_on_association(:project)
         it {should_not be_valid}
     end
   end
+
+
+
+
 
   
 end

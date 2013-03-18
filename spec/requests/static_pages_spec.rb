@@ -22,4 +22,18 @@ describe "StaticPages" do
     end
   end
 
+  describe "GET 'task'" do
+    it "returns http success" do
+      visit '/task'
+      page.should have_content('task')
+    end
+  end
+
+  describe "GET 'session'" do
+    it "returns http success" do
+      visit '/sessions/1'
+      page.should have_content('username')
+    end
+  end
+
 end

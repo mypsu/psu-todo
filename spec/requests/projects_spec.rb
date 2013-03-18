@@ -21,5 +21,22 @@ describe Project do
   end
 
 
+  describe "CRUD Projects" do
+    # earlier request spec hidden
+    
+    it "Deletes a Project" do
+      project = Factory(:project, owner: "john", name: "john", user_id: 1)
+      visit project_path
+      expect{
+        within "#project_#{project.id}" do
+          click_link 'Destroy'
+        end
+      }.to change(Contact,:project).by(-1)
+      page.should have_content "project"
+      page.should_not have_content "name"
+    end
+  end
 end
+
+
 

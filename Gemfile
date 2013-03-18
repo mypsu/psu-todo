@@ -23,15 +23,22 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 group :development, :test do
 #	gem 'pg'
 	gem 'sqlite3', '1.3.7'
 	gem 'rspec-rails'
-        gem 'guard-rspec'
+  gem 'guard-rspec'
 	gem 'capybara', '~>1.1.2'
-  	gem "fabrication", "~> 2.2.0"
-  	gem "launchy", "~> 2.1.2"
+  gem 'faker'
+  gem "fabrication", "~> 2.2.0"
+  gem "launchy", "~> 2.1.2"
+end
+
+group :test do
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :production do
