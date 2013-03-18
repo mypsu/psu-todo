@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessible :password, :username
   has_secure_password
   before_save { |user| user.username = username.downcase }
+  before_save :create_remember_token
+  
   validates :username, presence: true, uniqueness: true
   VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :username, presence: true, format: { with: VALID_EMAIL }

@@ -1,22 +1,22 @@
 <% provide(:title, @user.username) %>
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <h1>User:
+  <h3>User:
   <%= link_to @user.username, edit_user_path(@user) %>
-  </h1>
+  </h3>
   <b>Last Updated</b>
-  <%= @user.updated_at %>
+  <%= time_ago_in_words(@user.updated_at) %>
   <b>Created</b>
-  <%= @user.created_at %>
+  <%= time_ago_in_words(@user.created_at) %>
 </p>
 
  <% if @user.projects.any? %>
-      <h3># of Projects (<%= @user.projects.count %>)</h3>
+      <h1># of Projects (<%= @user.projects.count %>)</h1>
 	<%= render @projects %>	
 	<%= will_paginate @projects %>	
     <% else %>
-	<h3>no projects</h3>
+	<h1>no projects</h1>
     <% end %>
 
 

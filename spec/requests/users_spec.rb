@@ -87,6 +87,16 @@ reflection_children = User.reflect_on_association(:project)
     end
   end
 
+  describe "when user registration is correct" do
+      before do
+        fill_in "username",         with: "bill@yahoo.com"
+        fill_in "password",        with: "abcdef"
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+    end
 
 
 

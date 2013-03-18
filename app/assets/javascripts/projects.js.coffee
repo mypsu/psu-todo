@@ -7,3 +7,4 @@ jQuery ->
 		sPaginationType: "full_numbers"
 		oSearch: {"sSearch": ""}
 
+

@@ -14,14 +14,15 @@ PsuTodo::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'static_pages#home'
+  match "/", to: 'sessions#new'
 
   match '/home', to: 'sessions#new'
   match '/project', to: 'projects#new'
   match '/user', to: 'users#show'
 
   match '/register', to: 'users#new'
-  match '/login', to: 'session#new'
-  match '/logout', to: 'session#destroy'
+  match '/login', to: 'sessions#new'
+  match '/logout', to: 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

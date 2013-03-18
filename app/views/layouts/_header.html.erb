@@ -1,0 +1,29 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+          <%=  signed_in? %>
+        <ul class="nav pull-left">
+          <li><%= link_to "Home",    '/home'  %></li>
+
+
+           <% if signed_in? %>
+              <li><%= link_to "Project",    '/projects' %></li>
+              <li><%= link_to "All Users",    '/users' %></li>
+              <li><%= link_to "User", '#' %></li>
+              <li><%= link_to "Log out", '/logout', method: "delete" %></li>
+
+
+          <% else %>
+            <li><%= link_to "Login", '/home' %></li>
+          <% end %>
+              </ul>
+        </ul>
+         <ul class="nav pull-right">
+            <li><%= 'Projects To Do' %></li>
+          </ul>
+
+      </nav>
+    </div>
+  </div>
+</header>
