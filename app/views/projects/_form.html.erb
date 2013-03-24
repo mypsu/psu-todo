@@ -13,15 +13,12 @@
 
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.collection_select(:user_id, User.all, :id, :username, {:prompt=>"Select"}) %>
+    <%= f.collection_select(:user_id, User.all, :id, :username, {:selected_value => current_user.username}) %>
+
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br />

@@ -8,5 +8,10 @@ class CreateTaskdeps < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :taskdeps, :parent_id
+    add_index :taskdeps, :child_id
+    add_index :taskdeps, [:parent_id, :child_id], unique: true
+
   end
 end

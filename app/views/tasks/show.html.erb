@@ -2,6 +2,7 @@
 
 <h1>Listing </h1>
 
+
 <p>
   <b>Description:</b>
 <%= link_to @task.description, edit_task_path(@task) %>
@@ -13,10 +14,15 @@
 
 </p>
 
+      <p>Dependent Tasks:<%=   + @task.child.count %></p>
+	  <% @task.child.each do |subtask| %>
+   		     <%= link_to subtask, new_task_path(:task => subtask) %> 
+	  <% end %>
+
 <p>
   <b>Completed:</b>
   <%= @task.completed %>
-<%= link_to "Add Dependency", "#" %>
+
 </p>
 
 

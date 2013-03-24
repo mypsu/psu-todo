@@ -25,7 +25,7 @@
 
 </p>
 
-<%= link_to 'Add Task', new_task_path %> |
+<%= link_to 'Add Task', new_task_path(:project => @project.id) %> |
 <%= link_to 'Edit Project', edit_project_path(@project) %> |
 <%= link_to 'Return Back', projects_path %>
 

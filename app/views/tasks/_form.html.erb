@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+<div class="field">
     <%= f.label :project_id %><br />
-    <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt=>"Select"}) %>
+    <%= f.collection_select(:project_id, Project.all, :id, :name) %>
 
-  <% if @task.project_id? %>
-  <h3>..</h3> 
-    <% else %>
-  <h3>no projects</h3>
-    <% end %>
+   <!-- {:selected_value => @project.id}) %>-->
 
 
+<br />
   </div>
 
   <div class="field">
@@ -29,6 +27,10 @@
     <%= f.text_field :description %>
   </div>
 
+  <div class="field">
+    <%= f.label "Add Dependency" %><%= @task.child.count %><br />
+    <%= f.collection_select(:id, Task.all, :id, :description, {:selected_value => nil}) %>
+<br />
 
   <div class="field">
     <%= f.label :completed %><br />

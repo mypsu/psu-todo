@@ -20,6 +20,13 @@
     <% end %>
 
 
+ <% if @user.tasks.any? %>
+      <h1># of Tasks (<%= @user.tasks.count %>)</h1>
+    <%= render @tasks %> 
+    <% else %>
+  <h1>no tasks</h1>
+    <% end %>
+
   
 
 <%= link_to 'Create Project', new_project_path %> |

@@ -4,8 +4,6 @@
   <tr>
     <th>Parent</th>
     <th>Child</th>
-    <th>Create</th>
-    <th>Destroy</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,8 +13,6 @@
   <tr>
     <td><%= taskdep.parent_id %></td>
     <td><%= taskdep.child_id %></td>
-    <td><%= taskdep.create %></td>
-    <td><%= taskdep.destroy %></td>
     <td><%= link_to 'Show', taskdep %></td>
     <td><%= link_to 'Edit', edit_taskdep_path(taskdep) %></td>
     <td><%= link_to 'Destroy', taskdep, method: :delete, data: { confirm: 'Are you sure?' } %></td>

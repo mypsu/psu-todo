@@ -1,15 +1,13 @@
 PsuTodo::Application.routes.draw do
   resources :taskdeps
+  resources :tasks do 
+    member do
+      get :master, :child
+    end
+  end
 
-
-  resources :projects
-
-
-  #get "static_pages/home"
-  #get "static_pages/about"
-
-  resources :tasks
-  resources :projects
+#  resources :tasks
+  resources :projects 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
