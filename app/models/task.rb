@@ -7,19 +7,12 @@ class Task < ActiveRecord::Base
   has_many :taskdeps, foreign_key: "parent_id", dependent: :destroy
   has_many :child, through: :taskdeps
 
+  has_many :taskdependents
+  has_many :deps, :through => :taskdependents
+  has_many :inverse_taskdependents, :class_name => "Taskdependent", :foreign_key => "dep_id"
+  has_many :inverse_deps, :through => :inverse_taskdependents, :source => :task
 
-
-  def master_task?(other_task)
-    taskdeps.find_by_child_id(other_task.id)
-  end
-
-  def child_task!(other_task)
-    taskdeps.create!(child_id: other_task.id)
-  end
-
-  def delete_task_dep!(other_task)
-    taskdeps.find_by_child_id(other_task.id).destroy
-  end 
+  
 
 
 

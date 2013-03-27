@@ -1,30 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing </h1>
-
+<h2>Tasks </h2>
 
 <p>
-  <b>Description:</b>
+  <b>Project Name:</b>
+  <%= @task.project.name %>
+<br>
+  <b>Task Description:</b>
 <%= link_to @task.description, edit_task_path(@task) %>
-</p>
 
-<p>
-  <b>Project Id:</b>
-  <%= @task.project_id %>
-
-</p>
-
-      <p>Dependent Tasks:<%=   + @task.child.count %></p>
-	  <% @task.child.each do |subtask| %>
-   		     <%= link_to subtask, new_task_path(:task => subtask) %> 
+<% if @task.deps.any? %>
+	<p># of dependent tasks:<%=   + @task.deps.count %></p>
+	<ul>
+	  <% for deps in @task.deps %>
+	    <li>
+	    <%= deps.description %>
+		(<%= link_to "remove", deps, :method => :delete %>)
+	</li>
 	  <% end %>
+	</ul>
+
+<% else %>
+	<p>No Dependent Tasks</p>
+ <% end %>
 
 <p>
   <b>Completed:</b>
   <%= @task.completed %>
-
 </p>
 
 
+<% if @task.inverse_deps.any? %>
+	<h2><%=@task.inverse_deps.count %>
+	other Task(s) Relies on this Task: </h2>
+	<ul>
+	  <% for tasks in @task.inverse_deps %>
+	    <li><%=h tasks.description %></li>
+	  <% end %>
+	</ul>
+<% else %>
+	<h2>No other Tasks Rely on this Task: </h2>
+<% end %>
 
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description) %>|
+<%= link_to "Edit ", edit_task_path(@task) %>|
 <%= link_to 'Back', tasks_path %>

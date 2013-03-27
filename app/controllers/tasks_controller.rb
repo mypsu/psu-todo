@@ -15,7 +15,8 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     @task = Task.find(params[:id])
-#    @taskdep = Taskdep.find(params[:id])
+    #@taskdependent = Taskdependent.find(params[:id])
+    #@taskdep = Taskdep.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +28,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    #@project = Project.find(params[:project])
+    @project = Project.find(params[:project])
 
     respond_to do |format|
       format.html # new.html.erb

@@ -40,7 +40,9 @@ class TaskdepsController < ApplicationController
   # POST /taskdeps
   # POST /taskdeps.json
   def create
-    @taskdep = Taskdep.new(params[:taskdep])
+    #@taskdep = Taskdep.new(params[:taskdep])
+    @taskdep = current_task.taskdeps.build(:master_id => params[:master_id])
+
 
     respond_to do |format|
       if @taskdep.save

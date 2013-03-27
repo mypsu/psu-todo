@@ -1,4 +1,7 @@
 PsuTodo::Application.routes.draw do
+  resources :taskdependents
+
+
   resources :taskdeps
   resources :tasks do 
     member do
