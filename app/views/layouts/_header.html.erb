@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <nav>
-        <ul class="nav pull-left">
+        <ul class="nav pull-right">
           <li><%= link_to "Home",    '/home'  %></li>
 
            <% if !signed_in? %>
@@ -11,8 +11,10 @@
               <li><%= link_to "User", current_user %></li>
               <li><%= link_to "Log out", '/logout', method: "delete" %></li>
               <li></li>
-              <li><b><%= 'Welcome ' + current_user.username %></b></li>
-              <li><%= '.account created ' + time_ago_in_words(current_user.created_at) + ' ago' %></li>
+              <br>
+              <br>
+              
+         
 
           <% else %>
             <li><%= link_to "Login", '/home' %></li>

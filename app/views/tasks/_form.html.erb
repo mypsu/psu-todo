@@ -12,7 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :project_id %><br />
+  
+  
+  
+  
+  
+  Project:
     <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt=>"Select"}) %>
 
   <% if @task.project_id? %>
@@ -25,13 +30,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+  Project Description:
     <%= f.text_field :description %>
   </div>
 
 
   <div class="field">
-    <%= f.label :completed %><br />
+    Task Completed?
     <%= f.select :completed, [['No','NO'],['Yes','YES']] %>
   </div>
   <div class="actions">

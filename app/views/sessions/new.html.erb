@@ -1,11 +1,26 @@
 <% provide(:title, "Register") %>
-
-
 <% if !signed_in? %>
 
-<h3>Welcome to the Project To Do App</h3>
-<%=  current_user.username + ' your last update was ' %>
-<%=  time_ago_in_words(current_user.updated_at) %>
+<br>
+<table border="0">
+<tr>
+<td><img src="/assets/PSUicon.jpg" /></td>
+<td><h3>Welcome to the Task Managment 'To-Do' System</h3></td>
+</tr>
+</table> 
+<center>
+<img src="/assets/myborder.png" />
+</center>
+
+<br><br>
+<p>
+The Task Management To-Do System is a collaborative web application that will provide a one-stop shop for managing your To Do Lists for your project. This application will allow users to:<ul>
+<li>Create projects</li><li>Assign users to a project</li><li>Assign tasks and subtasks</li><li>Assign timelines to a project</li><li>Add notes</li><li>Assign a status</li><li>View reports</li>
+</ul></p>
+
+Projects will also be able to be updated with pertinent details by the Project Manager or by a person assigned to a task in the project. And, finally, administrators will have the ability to delete projects or tasks, as needed.
+
+
 
 <% else %>
 
@@ -25,6 +40,7 @@
 
 <h3>Register</h3>
 <p>New user? <%= link_to "Register", register_path %></p>
+
 
 
 <% end %>

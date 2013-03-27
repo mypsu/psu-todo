@@ -1,24 +1,42 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing </h1>
-
-<p>
-  <b>Description:</b>
-<%= link_to @task.description, edit_task_path(@task) %>
-</p>
-
-<p>
-  <b>Project Id:</b>
-  <%= @task.project_id %>
-
-</p>
-
-<p>
-  <b>Completed:</b>
-  <%= @task.completed %>
-<%= link_to "Add Dependency", "#" %>
-</p>
+<center>
+<table border="0">
+<tr>
+<td><img src="/assets/PSUicon.jpg" /></td>
+<td><h3>Project Task Details</h3></td>
+</tr>
+</table>
+<img src="/assets/myborder.png" />
+</center>
+<br>
 
 
 
+<table border="0">
+<tr>
+<td><b>Project Description: </b></td>
+<td><%= link_to @task.description, edit_task_path(@task) %></td>
+</tr>
+<tr>
+<td><b>Project Id:</b></td>
+<td><%= @task.project_id %></td>
+</tr>
+<tr>
+<td><b>Completed?</b></td>
+<td><%= @task.completed %>
+<%= link_to "Add Dependency", "#" %></td>
+
+</tr>
+</table> 
+
+
+<br><br>
 <%= link_to 'Back', tasks_path %>
+
+<p>
+<BR><BR><BR><BR><BR><BR>
+
+<hr width="100%"> 
+<b>Edit History:</b>
+<%=  current_user.username + ' your last update was ' %>
+<%=  time_ago_in_words(current_user.updated_at) %>

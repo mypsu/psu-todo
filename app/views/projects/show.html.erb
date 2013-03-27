@@ -1,16 +1,20 @@
 <p id="notice"><%= notice %></p>
+<center>
+<h3>Project:
+  <%= @project.name %></h3>
+<img src="/assets/myborder.png" />
+</center>
 
-<h1>Project:
-  <%= @project.name %></h1>
 
-<p>
-  <b>Description:</b>
+  <b>Project Description:</b>
   <%= @project.description %>
+  <br>
   <b>Start:</b>
   <%= time_ago_in_words(@project.start_date) %>
   <b>End:</b>
   <%= time_ago_in_words(@project.end_date) %>
 </p>
+
 
 <p>
 
@@ -24,8 +28,16 @@
     <% end %>
 
 </p>
+<BR><BR>
 
 <%= link_to 'Add Task', new_task_path %> |
 <%= link_to 'Edit Project', edit_project_path(@project) %> |
 <%= link_to 'Return Back', projects_path %>
 
+<p>
+<BR><BR><BR><BR><BR><BR>
+
+<hr width="100%"> 
+<b>Edit History:</b>
+<%=  current_user.username + ' your last update was ' %>
+<%=  time_ago_in_words(current_user.updated_at) %>
