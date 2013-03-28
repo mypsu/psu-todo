@@ -1,0 +1,17 @@
+<center>
+<h3>Add New Task</h3>
+
+<p>
+<img src="/assets/myborder.png" />
+</center>
+<%= render 'form' %>
+
+<%= link_to 'Back', tasks_path %>
+
+<p>
+<BR><BR><BR>
+
+<hr width="100%"> 
+<b>Edit History:</b>
+<%=  current_user.username + ' your last update was ' %>
+<%=  time_ago_in_words(current_user.updated_at) %>

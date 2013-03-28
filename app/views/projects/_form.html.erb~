@@ -1,0 +1,43 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+  <div class="field">
+  
+<table border="0">
+<tr>
+<td>User Name: </td>
+<td><%= f.collection_select(:user_id, User.all, :id, :username, {:prompt=>"Select"}) %></td>
+</tr>
+<tr>
+<td>Project Name:</td>
+<td><%= f.text_field :name %></td>
+</tr>
+<tr>
+<td>Project Description:</td>
+<td><%= f.text_field :description %></td>
+</tr>
+<tr>
+<td>Start Date: </td>
+<td><%= f.date_select :start_date %>  </td>
+</tr>
+<tr>
+<td>End Date:</td>
+<td> <%= f.date_select :end_date %></td>
+</tr>
+</table> 
+  
+ <P> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

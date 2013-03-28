@@ -1,0 +1,12 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+  include SessionsHelper
+  
+  config/initializers/mime_types.rb
+  Mime::Type.register "image/png", :png
+
+   def handle_unverified_request
+    sign_out
+    super
+  end
+end

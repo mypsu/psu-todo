@@ -1,0 +1,14 @@
+<center>
+<table border="0">
+<tr>
+<td><img src="/assets/PSUicon.jpg" /></td>
+<td><h3>New Project</h3></td>
+</tr>
+</table>
+</center>
+
+<img src="/assets/myborder.png" />
+
+<%= render 'form' %>
+
+<%= link_to 'Back', projects_path %>

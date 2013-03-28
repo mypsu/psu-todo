@@ -1,0 +1,35 @@
+<% provide(:title, @user.username) %>
+
+
+<p>
+  <h3>User:
+  <%= link_to @user.username, edit_user_path(@user) %>
+  </h3>
+  <b>Last Updated</b>
+  <%= time_ago_in_words(@user.updated_at) %>
+  <b>Created</b>
+  <%= time_ago_in_words(@user.created_at) %>
+</p>
+
+ <% if @user.projects.any? %>
+      <h1># of Projects (<%= @user.projects.count %>)</h1>
+	<%= render @projects %>	
+	<%= will_paginate @projects %>	
+    <% else %>
+	<h1>no projects</h1>
+    <% end %>
+
+
+  
+
+<%= link_to 'Create Project', new_project_path %> |
+<%= link_to 'Edit User', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<p>
+<BR><BR><BR><BR><BR><BR>
+
+<hr width="100%"> 
+<b>Edit History:</b>
+<%=  current_user.username + ' your last update was ' %>
+<%=  time_ago_in_words(current_user.updated_at) %>

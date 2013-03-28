@@ -1,0 +1,12 @@
+<center>
+
+<h3>Editing Project</h3>
+<img src="/assets/myborder.png" />
+</center>
+
+<img src="/assets/psuSmall.png" />
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

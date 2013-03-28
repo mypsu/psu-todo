@@ -1,0 +1,15 @@
+<center>
+<table border="0">
+<tr>
+<td><img src="/assets/PSUicon.jpg" /></td>
+<td><h3>Editing User</h3></td>
+</tr>
+</table>
+<img src="/assets/myborder.png" />
+</center>
+
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,32 @@
+<h3>Summary: Projects</h3>
+
+<table id="projects" >
+ <thead> 
+  <tr>
+    <th>Project Name</th>
+    <th>Project Description</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>User_Name</th>
+    <th></th>
+    <th></th>
+  </tr>
+ </thead>
+<% @projects.each do |project| %>
+  <tbody>
+  <tr>
+    <td><%= link_to project.name, project %></td>
+    <td><%= project.description %></td>
+    <td><%= project.start_date %></td>
+    <td><%= project.end_date %></td>
+    <td><%= project.user.username %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure you want to delete project: ' + project.name  } %></td>
+  </tr>
+</tbody>
+<% end %>
+</table>
+
+<br />
+<br><br>
+<%= link_to 'Add New Project', new_project_path %>
