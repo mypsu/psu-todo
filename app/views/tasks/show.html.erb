@@ -42,6 +42,6 @@
 	<h2>No other Tasks Rely on this Task: </h2>
 <% end %>
 
-<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description) %>|
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>|
 <%= link_to "Edit ", edit_task_path(@task) %>|
 <%= link_to 'Back', tasks_path %>

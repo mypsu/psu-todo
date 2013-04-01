@@ -16,6 +16,11 @@
     <%= params[:dep] %></h2>
   
   <div class="field">
+    <%= f.hidden_field :task_id, :value => params[:task_id]  %>
+  </div>
+
+
+  <div class="field">
     <%= f.label "Add Dependency" %><br />
     <%= f.collection_select(:dep_id, Task.all, :id, :description) %>
 
