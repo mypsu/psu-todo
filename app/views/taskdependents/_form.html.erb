@@ -1,0 +1,26 @@
+<%= form_for(@taskdependent) do |f| %>
+  <% if @taskdependent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@taskdependent.errors.count, "error") %> prohibited this taskdependent from being saved:</h2>
+
+      <ul>
+      <% @taskdependent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <h2> Task: 
+    <%= params[:dep] %></h2>
+  
+  <div class="field">
+    <%= f.label "Add Dependency" %><br />
+    <%= f.collection_select(:dep_id, Task.all, :id, :description) %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

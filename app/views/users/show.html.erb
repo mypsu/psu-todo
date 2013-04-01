@@ -11,6 +11,18 @@
   <%= time_ago_in_words(@user.created_at) %>
 </p>
 
+
+
+
+
+<%= @user.projects do |builder| %>
+<fieldset>
+  <%= builder.name%>
+</fieldset>
+<% end %>
+
+
+
  <% if @user.projects.any? %>
       <h1># of Projects (<%= @user.projects.count %>)</h1>
 	<%= render @projects %>	

@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 	else
 		flash.now[:error] = 'invalid login'
 		render 'new'
+
 	end
   end
 
