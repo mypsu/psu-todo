@@ -26,6 +26,15 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, [['Not Started','NOTSTARTED'],['Started','STARTED'],['Finish','FINISH']] %>
+  </div>
+    <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_field :comments %>
+  </div>
+
 <!--
   <div class="field">
     <%= f.label "Add Dependency" %><%= @task.child.count %><br />

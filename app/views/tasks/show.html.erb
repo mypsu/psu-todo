@@ -8,6 +8,12 @@
 <br>
   <b>Task Description:</b>
 <%= link_to @task.description, edit_task_path(@task) %>
+<br>
+  <b>Task Comments:</b>
+  <%= @task.comments %>
+<br>
+  <b>Task Status:</b>
+  <%= @task.status %>
 
 <% if @task.deps.any? %>
 	<p># of dependent tasks:<%=   + @task.deps.count %></p>

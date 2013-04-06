@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :project_id, :completed, :description
+  attr_accessible :project_id, :completed, :description, :status, :comments
   validates :description, :length => {:maximum => 300}
   validates :project_id, presence: true
   belongs_to :project
