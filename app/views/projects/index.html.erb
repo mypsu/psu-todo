@@ -12,8 +12,8 @@
     <th></th>
   </tr>
  </thead>
-<% @projects.each do |project| %>
   <tbody>
+<% @projects.each do |project| %>
   <tr>
     <td><%= link_to project.name, project %></td>
     <td><%= project.description %></td>
@@ -23,8 +23,8 @@
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure you want to delete project: ' + project.name  } %></td>
   </tr>
-</tbody>
 <% end %>
+</tbody>
 </table>
 
 <br />

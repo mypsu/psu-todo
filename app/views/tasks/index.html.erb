@@ -12,8 +12,8 @@
     <th></th>
   </tr>
 </thead>
-<% @tasks.each do |task| %>
 <tbody>
+<% @tasks.each do |task| %>
   <tr>
     <td><%= link_to task.description, task %></td>
     <td><%= task.project_id %></td>
