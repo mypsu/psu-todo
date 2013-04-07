@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
 
 
-
    def handle_unverified_request
     sign_out
     super

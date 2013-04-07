@@ -23,42 +23,59 @@
   <p>no tasks</p>
     <% end %>
 
-
-<ol>
+<table id="users">
+<thead>
+<tr>
+  <th>Project
+    </th>
+   <th>Task
+    </th>
+   <th>Task Status
+    </th>
+    <th>Depends On
+    </th>
+   <th>Needed
+    </th>
+  </tr>
+</thead>
+<tbody>
 <% @user.projects.each do |projects| %>
-<!-- project -->
-  <li>Project: 
-    <%= projects.name %>
-<!-- task -->
-    <ol>
-      <% projects.tasks.each do |tasks| %>
-        <li><%= tasks.description %>  
 
-<!-- task dependents-->
-            <% if tasks.deps.any? %>[Needs: <% end %>
+<!-- task-->
+      <% projects.tasks.each do |tasks| %>          
+      <tr><td><%=projects.name%></td>
+          <td><%= tasks.description %></td>
+          <td><%= tasks.status %></td>
+<!-- task dependency-->
+          <td>
+              <% tasks.deps.each do |td| %>
+              <% if td.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= td.description %></font><br>
+              <%end %>
+        </td>
+          <td>
+              <% tasks.inverse_deps.each do |itd| %>
+              <% if itd.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= itd.description %></font><br>
+              <%end %>
+        </td>
 
-            <% tasks.deps.each do |td| %>
-            <%= td.completed %>
-            <%= td.description %>
-            <%end %>
 
-            <% if tasks.deps.any? %>] <% end %>
-        </li>
-<!-- inverse tasks -->
+        </tr>
+      <% end %>            
 
-            <% if tasks.inverse_deps.any? %>
-              Needed By:
-            <% end %>
-                <% tasks.inverse_deps.each do |itd| %>
-                   <%= itd.completed %>
-                   <%= itd.description %>
-                <% end %>
-      <% end %>
-    </ol>
-  </li>
+<% end %> 
+</tbody>
+</table>
 
-<% end %>
-</ol>
 
 
 

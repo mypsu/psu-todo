@@ -3,7 +3,7 @@
     <td><%= f.text_field :name%></td>
     <td><%= f.hidden_field :_destroy%>
 
-    <%= link_to "add", new_project_path %> |
+    <%= link_to "Add Project", new_project_path %> |
     <%= link_to "remove ", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
     <% @project_id = f.object.id%>
 </tr>
