@@ -1,7 +1,8 @@
 class Task < ActiveRecord::Base
   attr_accessible :project_id, :completed, :description, :status, :comments, :taskdependents_attributes
-  validates :description, :length => {:maximum => 300}
+  validates :description, :length => {:maximum => 300}, length: {minimum: 3}
   validates :project_id, presence: true
+
   belongs_to :project
   has_one :user, :through => :project
 #to delete

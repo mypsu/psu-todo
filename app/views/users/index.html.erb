@@ -8,16 +8,26 @@
      <th></th>
   </tr>
  </thead>
-<% @users.each do |user| %>
  <tbody>
+<% @users.each do |user| %>
   <tr>
     <td><%= link_to user.username, user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <% if current_user == user  %>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <% else %>
+      <td></td><td></td>
+    <% end %>
+
+
   </tr>
-   </tbody>
 <% end %>
+   </tbody>
+
 </table>
+
 
 <br />
 

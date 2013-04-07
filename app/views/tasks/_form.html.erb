@@ -35,12 +35,6 @@
     <%= f.text_field :comments %>
   </div>
 
-<!--
-  <div class="field">
-    <%= f.label "Add Dependency" %><%= @task.child.count %><br />
-    <%= f.collection_select(:id, Task.all, :id, :description, {:selected_value => nil}) %>
-<br />
--->
   <div class="field">
     <%= f.label :completed %><br />
     <%= f.select :completed, [['No','NO'],['Yes','YES']] %>
@@ -49,3 +43,7 @@
     <%= f.submit %>
   </div>
 <% end %>
+<br>
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
+<br>
+

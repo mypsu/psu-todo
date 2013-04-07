@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h2>Tasks </h2>
 
@@ -49,5 +48,5 @@
 <% end %>
 
 <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>|
-<%= link_to "Edit ", edit_task_path(@task) %>|
-<%= link_to 'Back', tasks_path %>
+<%= link_to "Edit Task ", edit_task_path(@task) %>|
+<%= link_to 'List Tasks', tasks_path %>

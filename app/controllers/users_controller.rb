@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :authorize, only: [:edit, :update, :destroy]
+before_filter :correct_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -30,11 +30,13 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
-
-    respond_to do |format|
+    if @user.save
+        redirect_to root_url, notice: "Thank you for signing up"
+    else
+      respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
+      end
     end
   end
 
@@ -86,23 +88,23 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+
+      if @user.username == current_user.username
+        format.html { redirect_to users_url }
+      else
+        format.html { redirect_to root_url }
+      end
+
       format.json { head :no_content }
     end
   end
 
   private
 
- 
-
-
-    def signed_in_user
-      redirect_to root_path, notice: "Please sign in." unless signed_in?
-    end
-
-    def correct_user
+   def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
+      redirect_to(users_url) unless current_user?(@user)
+    end 
+
 
 end

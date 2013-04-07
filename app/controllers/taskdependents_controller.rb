@@ -1,6 +1,8 @@
 class TaskdependentsController < ApplicationController
   # GET /taskdependents
   # GET /taskdependents.json
+  before_filter :authorize
+
   def index
     @taskdependents = Taskdependent.all
 
@@ -46,7 +48,7 @@ class TaskdependentsController < ApplicationController
 
     respond_to do |format|
       if @taskdependent.save
-        format.html { redirect_to @taskdependent, notice: 'Taskdependent was successfully created.' }
+        format.html { redirect_to tasks_url, notice: ' Taskdependent  was successfully created.' }
         format.json { render json: @taskdependent, status: :created, location: @taskdependent }
         #redirect_to /tasks
 
