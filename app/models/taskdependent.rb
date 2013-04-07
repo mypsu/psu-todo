@@ -3,4 +3,5 @@ class Taskdependent < ActiveRecord::Base
 
   belongs_to :task
   belongs_to :dep, :class_name => "Task"
+
 end

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
 	user = User.find_by_username(params[:session][:username].downcase)
 	if user && user.authenticate(params[:session][:password])
-		flash.now[:error] = 'aasign inbb'
+		flash.now[:error] = 'invalid '
 		sign_in user
 		redirect_to user
 	else

@@ -2,11 +2,29 @@
     <td></td>
     <td><%= f.text_field :description%></td>
     <td><%= f.hidden_field :_destroy%>
+    
     <%= link_to "add", new_task_path(:project => @project_id) %> 
     |
     <%= link_to "remove", task_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
 
+</tr>
+
+<tr>
+    <td></td>
+    <td></td>
+    <td>
+
+
+<td>
+
+ <%= f.fields_for :taskdependents do |builder| %>
+        <%= builder.text_field :dep_id%>
+     <% end %>
+</td>
+
+
 
 </tr>
+
 
   

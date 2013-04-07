@@ -3,28 +3,27 @@
 
 <% if !signed_in? %>
 
-<h3>Welcome to the Project To Do App</h3>
-<%=  current_user.username + ' your last update was ' %>
-<%=  time_ago_in_words(current_user.updated_at) %>
+	<h3>Welcome to the Project To Do App</h3>
+	<%=  current_user.username + ' your last update was ' %>
+	<%=  time_ago_in_words(current_user.updated_at) %>
 
 <% else %>
 
 
 
-<h3>Log In</h3>
-   <%= form_for(:session, url: sessions_path) do |f| %>
+	<h3>Log In</h3>
+	   <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.text_field :username %>
+	      <%= f.label :email %>
+	      <%= f.text_field :username %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
 
-      <%= f.submit "Log In" %>
-    <% end %>
+	      <%= f.submit "Log In" %>
+	    <% end %>
 
 <h3>Register</h3>
 <p>New user? <%= link_to "Register", register_path %></p>
-
 
 <% end %>

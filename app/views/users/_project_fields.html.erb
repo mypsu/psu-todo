@@ -6,9 +6,8 @@
     <%= link_to "add", new_project_path %> |
     <%= link_to "remove ", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
     <% @project_id = f.object.id%>
-
 </tr>
-   <tr>
+<tr>
    	<td><%= f.label :Tasks%></td><td></td><td></td>
      <%= f.fields_for :tasks do |builder| %>
   		<%= render 'task_fields', f: builder %>

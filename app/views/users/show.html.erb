@@ -12,12 +12,61 @@
 </p>
 
 
+ <% if @user.projects.any? %>
+      <p># of Projects (<%= @user.projects.count %>)</p>
+    <% else %>
+  <p>no projects</p>
+    <% end %>
+ <% if @user.tasks.any? %>
+      <p># of Tasks (<%= @user.tasks.count %>)</p>
+    <% else %>
+  <p>no tasks</p>
+    <% end %>
+
+
+<ol>
+<% @user.projects.each do |projects| %>
+<!-- project -->
+  <li>Project: 
+    <%= projects.name %>
+<!-- task -->
+    <ol>
+      <% projects.tasks.each do |tasks| %>
+        <li><%= tasks.description %>  
+
+<!-- task dependents-->
+            <% if tasks.deps.any? %>[Needs: <% end %>
+
+            <% tasks.deps.each do |td| %>
+            <%= td.completed %>
+            <%= td.description %>
+            <%end %>
+
+            <% if tasks.deps.any? %>] <% end %>
+        </li>
+<!-- inverse tasks -->
+
+            <% if tasks.inverse_deps.any? %>
+              Needed By:
+            <% end %>
+                <% tasks.inverse_deps.each do |itd| %>
+                   <%= itd.completed %>
+                   <%= itd.description %>
+                <% end %>
 
 
 
 
+      <% end %>
+    </ol>
+  </li>
+
+<% end %>
+</ol>
 
 
+
+<!--
  <% if @user.projects.any? %>
       <h1># of Projects (<%= @user.projects.count %>)</h1>
 	<%= render @projects %>	
@@ -34,7 +83,7 @@
   <h1>no tasks</h1>
     <% end %>
 
-  
+  -->
 
 <%= link_to 'Create Project', new_project_path %> |
 <%= link_to 'Edit User', edit_user_path(@user) %> |
