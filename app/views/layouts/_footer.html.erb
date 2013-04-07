@@ -5,6 +5,10 @@
     <div class="container">
       <nav>
 
++<b>Edit History:</b>
++<%=  current_user.username + ' your last update was ' %>
++<%=  time_ago_in_words(current_user.updated_at) %>
+
 			<h5>PSU Team 4 SWENG 500</h5>          
 
       </nav>
