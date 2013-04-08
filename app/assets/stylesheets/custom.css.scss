@@ -15,6 +15,19 @@ body {
   padding-top: 60px;
 }
 
+a:hover {
+     color: #00438a;
+     text-decoration: underline;
+}
+
+a {
+     color: #00438a;
+    text-decoration: underline;
+    font-size: 1.3em;
+    font-weight: normal;
+    color: $grayMediumLight;
+}
+
 section {
   overflow: auto;
 }
@@ -37,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: left;

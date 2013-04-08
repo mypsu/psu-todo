@@ -1,5 +1,5 @@
 
-<h2>Tasks </h2>
+<h3>Tasks </h3>
 
 <p>
   <b>Project Name:</b>
@@ -36,15 +36,15 @@
 
 
 <% if @task.inverse_deps.any? %>
-	<h2><%=@task.inverse_deps.count %>
-	other Task(s) Relies on this Task: </h2>
+	<h3><%=@task.inverse_deps.count %>
+	other Task(s) Relies on this Task: </h3>
 	<ul>
 	  <% for tasks in @task.inverse_deps %>
 	    <li><%=h tasks.description %></li>
 	  <% end %>
 	</ul>
 <% else %>
-	<h2>No other Tasks Rely on this Task: </h2>
+	<h3>No other Tasks Rely on this Task: </h3>
 <% end %>
 
 <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>|
