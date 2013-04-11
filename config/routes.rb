@@ -13,6 +13,7 @@ PsuTodo::Application.routes.draw do
   resources :projects 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :user_profiles
 
   root to: 'sessions#new'
   match "/", to: 'sessions#new'
@@ -21,7 +22,7 @@ PsuTodo::Application.routes.draw do
   match '/project', to: 'projects#new'
   match '/user', to: 'users#show'
 
-  match '/register', to: 'users#new'
+  match '/register', to: 'user_profiles#new'
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 

@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   #validates :password, presence: true, length: {minimum: 6}
   has_many :projects, dependent: :destroy
   has_many :tasks, :through => :projects
-
+  has_one :user_profile
+  
   accepts_nested_attributes_for :projects, allow_destroy: true
 
   private
