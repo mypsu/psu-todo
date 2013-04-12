@@ -3,7 +3,7 @@
 
 <% if !signed_in? %>
 
-	<h3>Welcome to the Project To Do App</h3>
+	<h1>Welcome to the Project To Do App</h1>
 
 
 
@@ -64,8 +64,16 @@
 <% else %>
 
 
+<br><br>
+<p>
+The Task Management To-Do System is a collaborative web application that will provide a one-stop shop for managing your To Do Lists for your project. This application will allow users to:<ul>
+<li>Create projects</li><li>Assign users to a project</li><li>Assign tasks and subtasks</li><li>Assign timelines to a project</li><li>Add notes</li><li>Assign a status</li><li>View reports</li>
+</ul></p>
 
-	<h3>Log In</h3>
+Projects will also be able to be updated with pertinent details by the Project Manager or by a person assigned to a task in the project.
+
+<br>
+
 	   <%= form_for(:session, url: sessions_path) do |f| %>
 
 	      <%= f.label :email %>
@@ -77,7 +85,7 @@
 	      <%= f.submit "Log In" %>
 	    <% end %>
 
-<h3>Register</h3>
-<p>New user? <%= link_to "Register", register_path %></p>
+<p>OR </p>
+<p>Register if you are a new User <%= link_to "Register", register_path %></p>
 
 <% end %>

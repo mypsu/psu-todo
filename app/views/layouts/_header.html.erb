@@ -2,7 +2,11 @@
   <div class="navbar-inner">
     <div class="container">
       <nav>
-        <ul class="nav pull-left">
+
+<%= link_to image_tag("psu.jpg", alt: "Penn State", :size => "100x90"), '/home' %>
+
+        <ul class="nav pull-right">
+
           <li><%= link_to "Home",    '/home'  %></li>
 
            <% if !signed_in? %>

@@ -2,13 +2,10 @@
 
 
 <p>
-  <h3>User:
+  <h1>User:
   <%= link_to @user.username, edit_user_path(@user) %>
-  </h3>
-  <b>Last Updated</b>
-  <%= time_ago_in_words(@user.updated_at) %>
-  <b>Created</b>
-  <%= time_ago_in_words(@user.created_at) %>
+  </h1>
+
 </p>
 
 

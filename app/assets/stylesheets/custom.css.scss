@@ -3,7 +3,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$blue: #000099;
+$blue: #000080;
 
 /* universal */
 
@@ -53,7 +53,8 @@ h1 {
   font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: left;
+  text-align: center;
+    color: $blue;
 }
 
 h2 {
