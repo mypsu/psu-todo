@@ -25,6 +25,9 @@ PsuTodo::Application.routes.draw do
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 
+  get "static_pages/report"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

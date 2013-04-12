@@ -1,0 +1,28 @@
++<%  if !current_user.nil? %>
+	+<b>Edit History:</b>
+	<%=current_user.username + ' your last update was ' %>
+	+<%=  time_ago_in_words(current_user.updated_at) %>
+
+
+	 <% if current_user.projects.any? 
+		@user=current_user
+	 	%>
+      <h1># of Projects (<%= @user.projects.count %>)</h1>
+
+
+    <% else %>
+  <p>no projects</p>
+    <% end %>
+ <% if @user.tasks.any? %>
+      <h1># of Total Tasks (<%= @user.tasks.count %>)</h1>
+      <h3># Completed Tasks (<%= @user.tasks.where(:completed => 'YES').count %>)</h3>
+      <h3># Not Completed Tasks (<%= @user.tasks.where(:completed => 'NO').count %>)</h3>
+
+    <% else %>
+  <p>no tasks</p>
+    <% end %>
+
+
+
+
+<%  end%>
