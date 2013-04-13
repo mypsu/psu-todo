@@ -5,9 +5,6 @@ class Task < ActiveRecord::Base
 
   belongs_to :project
   has_one :user, :through => :project
-#to delete
-#  has_many :taskdeps, foreign_key: "parent_id", dependent: :destroy
-#  has_many :child, through: :taskdeps
 
   has_many :taskdependents
   has_many :deps, :through => :taskdependents

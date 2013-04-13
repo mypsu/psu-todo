@@ -36,6 +36,70 @@
   </div>
   <% end %>
 <br>
+
+
+<!-- dep ids-->
+
+
+
+<!-- Needs this  -->
+<% if @task.deps.any? %>
+  <h1> Still Waiting For <%=   + @task.deps.count %> Tasks To Finish</h1>
+  <ul>
+    <% for deps in @task.deps %>
+
+
+<!-- really ineffiencient, need to fix, it only picks up the last value-->
+
+      <% @task.taskdependents.each do |td| %>
+        <% if (td.dep_id.to_s).eql?(deps.id.to_s) %>
+              <%= td.id%>
+              <% @taskdep_id = td.id%>
+        <% end%>
+        <br>
+      <% end%>
+
+
+      <li><%=deps.description%>
+    <%= link_to 'Destroy',
+      {:controller => 'taskdependents', :action => 'destroy', :id => @taskdep_id, :taskid => @task.id},
+      { confirm: 'Are you sure?', :method => :delete} %>
+    </li>
+
+
+
+
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>No Dependent Tasks</p>
+ <% end %>
+
+<p>
+  <b>Completed:</b>
+  <%= @task.completed %>
+</p>
+
+<!-- Needed By  -->
+
+<% if @task.inverse_deps.any? %>
+  <h1>Holding Up <%=@task.inverse_deps.count %> Task(s)
+   </h1>
+  <ul>
+    <% for tasks in @task.inverse_deps %>
+      <li><%=h tasks.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>This Task Is Not Holding Anyone Behind </h1>
+<% end %>
+
+
+
+
+
+
 <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
 <br>
 

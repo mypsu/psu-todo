@@ -78,12 +78,13 @@ class TaskdependentsController < ApplicationController
   # DELETE /taskdependents/1
   # DELETE /taskdependents/1.json
   def destroy
- #   @taskdependent = Taskdependent.find(params[:id])
-    @taskdependent = current_task.taskdependents.find(params[:id])
+#    @taskdependent = Taskdependent.where(:depid => params[:depid],taskid => params[:taskid], )
+    @taskdependent = Taskdependent.find(params[:id])
+   #  @taskdependent = current_task.taskdependents.find(params[:id])
     @taskdependent.destroy
 
     respond_to do |format|
-      format.html { redirect_to taskdependents_url }
+      format.html { redirect_to task_url(params[:taskid]) }
       format.json { head :no_content }
 
     end
