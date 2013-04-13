@@ -35,28 +35,21 @@
     <%= f.submit %>
   </div>
   <% end %>
+  
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
 <br>
-
-
-<!-- dep ids-->
-
-
 
 <!-- Needs this  -->
 <% if @task.deps.any? %>
   <h1> Still Waiting For <%=   + @task.deps.count %> Tasks To Finish</h1>
   <ul>
     <% for deps in @task.deps %>
-
-
-<!-- really ineffiencient, need to fix, it only picks up the last value-->
+<!--  gets taskdep for deletion.  t only picks up the last taskdep value-->
 
       <% @task.taskdependents.each do |td| %>
         <% if (td.dep_id.to_s).eql?(deps.id.to_s) %>
-              <%= td.id%>
               <% @taskdep_id = td.id%>
         <% end%>
-        <br>
       <% end%>
 
 
@@ -65,9 +58,6 @@
       {:controller => 'taskdependents', :action => 'destroy', :id => @taskdep_id, :taskid => @task.id},
       { confirm: 'Are you sure?', :method => :delete} %>
     </li>
-
-
-
 
     <% end %>
   </ul>
@@ -96,10 +86,4 @@
 <% end %>
 
 
-
-
-
-
-<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
-<br>
 

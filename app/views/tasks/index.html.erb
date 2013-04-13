@@ -1,27 +1,9 @@
 <h1>Listing task</h1>
 
-
-
 <table id="users">
 <thead>
 <tr>
-  <th>Project
-    </th>
-   <th>Task
-    </th>
-   <th>Task Status
-    </th>
-    <th>Waiting For
-    </th>
-   <th>Needed By
-    </th>
-
-<th>Add Dependency
-    </th>
-   <th>Delete
-    </th>
-
-  </tr>
+  <th>Project</th>   <th>Task</th><th>Task Status</th><th>Waiting For</th><th>Needed By</th><th>Add Dependency</th><th>Delete Task</th>  </tr>
 </thead>
 <tbody>
 <% current_user.projects.each do |projects| %>
@@ -30,17 +12,20 @@
       <% projects.tasks.each do |tasks| %>          
       <tr>
         <td><%=link_to projects.name, projects%></td>
-          <td><%=link_to tasks.description,  tasks%></td>
+          <td><%=link_to tasks.description,  edit_task_path(tasks) %></td>
           <td>
             <%= tasks.status %></td>
 <!-- task dependency-->
           <td>
               <% tasks.deps.each do |td| %>
-              <% if td.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                  <% if td.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif td.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
+
                     <%= td.description %></font><br>
               <%end %>
         </td>
@@ -56,7 +41,7 @@
         </td>
     
 
-    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description) %></td> 
+    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description, :task_id => tasks.id) %></td> 
     
 
     <td><%= link_to 'Delete', tasks, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' + tasks.description  } %></td>
@@ -81,6 +66,7 @@
                Updated: <%= time_ago_in_words(tasks.updated_at) %> by 
               <%= current_user.username %>
                 </ul>
+                <ul> Comment: <%= tasks.comments%></ul>
            <ul>
 
 <!-- task dependency-->
