@@ -1,11 +1,12 @@
-+<%  if !current_user.nil? %>
++<%  if !current_user.nil? 
+    @user=current_user
+  %>
 	+<b>Edit History:</b>
 	<%=current_user.username + ' your last update was ' %>
 	+<%=  time_ago_in_words(current_user.updated_at) %>
 
 
 	 <% if current_user.projects.any? 
-		@user=current_user
 	 	%>
       <h1># of Projects (<%= @user.projects.count %>)</h1>
 
