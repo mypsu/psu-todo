@@ -2,10 +2,7 @@
     <td></td>
     <td><%= f.text_field :description%></td>
     <td><%= f.hidden_field :_destroy%>
-    
-    <%= link_to "Add Task", new_task_path(:project => @project_id) %> 
-    |
-    <%= link_to "remove", task_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
+    <%= link_to "remove task", task_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
 
     <td>
       |<%= link_to 'Add dependency', new_taskdependent_path(:dep => f.object.id) %></td> 

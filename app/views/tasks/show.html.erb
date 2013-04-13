@@ -49,6 +49,7 @@
 
 <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>|
 <%= link_to "Edit Task ", edit_task_path(@task) %>|
-<%= link_to 'List Tasks', tasks_path %>
+<!--<%= link_to 'List Tasks', tasks_path %>-->
+<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' } %>
 
-<%= link_to 'Return Back', projects_path %>
+<%= link_to 'Return to Project', projects_path %>

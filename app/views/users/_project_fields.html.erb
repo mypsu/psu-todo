@@ -1,11 +1,15 @@
-<tr>
-    <td><%= f.label :Project%></td>
+<tr class="Project">
+    <td ><%= f.label :Project%></td>
     <td><%= f.text_field :name%></td>
     <td><%= f.hidden_field :_destroy%>
 
-    <%= link_to "Add Project", new_project_path %> |
-    <%= link_to "remove ", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
+    <%= link_to "Create New Project", new_project_path %> |
+    <%= link_to "Add Task", new_task_path(:project => f.object.id) %> |
+
+
+    <%= link_to "Remove Project", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
     <% @project_id = f.object.id%>
+
 </tr>
 <tr>
    	<td><%= f.label :Tasks%></td><td></td><td></td>

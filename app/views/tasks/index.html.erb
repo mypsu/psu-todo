@@ -1,37 +1,117 @@
 <h1>Listing task</h1>
 
 
-<table id="tasks">
+
+<table id="users">
 <thead>
-  <tr>
-    <th>Description</th>
-    <th>Project ID</th>
-    <th>Completed</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<tr>
+  <th>Project
+    </th>
+   <th>Task
+    </th>
+   <th>Task Status
+    </th>
+    <th>Depends On
+    </th>
+   <th>Needed
+    </th>
+
+<th>Depends On
+    </th>
+   <th>Needed
+    </th>
+
   </tr>
 </thead>
 <tbody>
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= link_to task.description, task %></td>
-    <td><%= task.project_id %></td>
-    <td><%= task.completed %></td> 
+<% current_user.projects.each do |projects| %>
 
-    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => task.description) %></td> 
+<!-- task-->
+      <% projects.tasks.each do |tasks| %>          
+      <tr>
+        <td><%=link_to projects.name, projects%></td>
+          <td><%=link_to tasks.description,  tasks%></td>
+          <td>
+            <%= tasks.status %></td>
+<!-- task dependency-->
+          <td>
+              <% tasks.deps.each do |td| %>
+              <% if td.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= td.description %></font><br>
+              <%end %>
+        </td>
+          <td>
+              <% tasks.inverse_deps.each do |itd| %>
+              <% if itd.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= itd.description %></font><br>
+              <%end %>
+        </td>
     
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' + task.description  } %></td>
-  </tr>
-<% end %>
+
+    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description) %></td> 
+    
+
+    <td><%= link_to 'Delete', tasks, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' + tasks.description  } %></td>
+
+
+        </tr>
+      <% end %>            
+
+<% end %> 
 </tbody>
-
 </table>
-
 <br />
 
+<h1> Activity </h1>
+
+<% current_user.projects.each do |projects| %>
+<!-- task-->
+      <% projects.tasks.each do |tasks| %>          
+      <ul>
+      <li>Project <%=link_to projects.name, projects%> </li>
+          <ul>Task <%=link_to tasks.description,  tasks%> 
+               Updated: <%= time_ago_in_words(tasks.updated_at) %> by 
+              <%= current_user.username %>
+                </ul>
+           <ul>
+
+<!-- task dependency-->
+              
+              <% tasks.deps.each do |td| %>
+                <% if td.completed == 'YES' %>
+                      <font color="green">
+                <% else %>
+                      <font color="red">
+                <%end %> 
+                      Has Dependency: <%= td.description %></font><br>
+                <%end %>
+
+              <% tasks.inverse_deps.each do |itd| %>
+              <% if itd.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    Is Needed By <%= itd.description %></font><br>
+              <%end %>
+          </ul>
+          </ul>
+      <% end %>            
+
+<% end %> 
+
+
 <%= link_to 'New Task', new_task_path %>
+
+
 
 
 

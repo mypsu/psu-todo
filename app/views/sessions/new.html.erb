@@ -63,7 +63,48 @@
 </table>
 <br>
 <br>
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'Create a New Project', new_project_path %>
+
+
+
+<h1> Activity Feed</h1>
+
+<% current_user.projects.each do |projects| %>
+<!-- task-->
+      <% projects.tasks.each do |tasks| %>          
+      <ul>
+      <li>Project <%=link_to projects.name, projects%> </li>
+          <ul>Task <%=link_to tasks.description,  tasks%> 
+               Updated: <%= time_ago_in_words(tasks.updated_at) %> by 
+              <%= current_user.username %>
+                </ul>
+           <ul>
+
+<!-- task dependency-->
+              
+              <% tasks.deps.each do |td| %>
+                <% if td.completed == 'YES' %>
+                      <font color="green">
+                <% else %>
+                      <font color="red">
+                <%end %> 
+                      Has Dependency: <%= td.description %></font><br>
+                <%end %>
+
+              <% tasks.inverse_deps.each do |itd| %>
+              <% if itd.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    Is Needed By <%= itd.description %></font><br>
+              <%end %>
+          </ul>
+          </ul>
+      <% end %>            
+
+<% end %>
+
 
 <% else %>
 

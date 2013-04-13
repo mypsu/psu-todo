@@ -2,7 +2,10 @@
     <td><%= f.label :Project%></td>
     <td><%= f.text_field :name%></td>
     <td><%= f.hidden_field :_destroy%>
-    <%= link_to "remove", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %></td>
+    <%= link_to "remove", project_path(f.object.id), :confirm => "Are you sure?", :method => :delete %>
+
+
+  </td>
 </tr>
    <tr>
    	<td><%= f.label :Tasks%></td><td></td><td></td>
