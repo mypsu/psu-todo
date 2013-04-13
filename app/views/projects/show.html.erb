@@ -22,8 +22,8 @@
 <tbody>
 <!-- task-->
       <% @project.tasks.each do |tasks| %>          
-      <tr><td><%=@project.name%></td>
-          <td><%= tasks.description %></td>
+      <tr><td><%= link_to @project.name, edit_project_path(@project)%></td>
+          <td><%= link_to tasks.description, tasks %></td>
           <td><%= tasks.status %></td>
 <!-- task dependency-->
           <td>
@@ -61,5 +61,6 @@
 
 <%= link_to 'Add Task', new_task_path(:project => @project.id) %> |
 <%= link_to 'Edit Project', edit_project_path(@project) %> |
+<%= link_to 'New Project', new_project_path %>|
 <%= link_to 'Return Back', projects_path %>
 

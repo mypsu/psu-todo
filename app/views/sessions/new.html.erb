@@ -27,9 +27,11 @@
 
 <!-- task-->
       <% projects.tasks.each do |tasks| %>          
-      <tr><td><%=projects.name%></td>
-          <td><%= tasks.description %></td>
-          <td><%= tasks.status %></td>
+      <tr>
+        <td><%=link_to projects.name, projects%></td>
+          <td><%=link_to tasks.description,  tasks%></td>
+          <td>
+            <%= tasks.status %></td>
 <!-- task dependency-->
           <td>
               <% tasks.deps.each do |td| %>
@@ -59,7 +61,9 @@
 <% end %> 
 </tbody>
 </table>
-
+<br>
+<br>
+<%= link_to 'New Project', new_project_path %>
 
 <% else %>
 

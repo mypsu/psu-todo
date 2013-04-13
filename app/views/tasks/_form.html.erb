@@ -11,38 +11,29 @@
     </div>
   <% end %>
 
-
 <div class="field">
-    <%= f.label :project_id %><br />
+    <%= f.label :project_id %>
     <%= f.collection_select(:project_id, Project.all, :id, :name) %>
 
    <!-- {:selected_value => @project.id}) %>-->
 
-
-<br />
   </div>
 
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label :status %>
     <%= f.select :status, [['Not Started','NOTSTARTED'],['Started','STARTED'],['Finish','FINISH']] %>
-  </div>
-    <div class="field">
-    <%= f.label :comments %><br />
+    <%= f.label :comments %>
     <%= f.text_field :comments %>
-  </div>
-
-  <div class="field">
-    <%= f.label :completed %><br />
+  
+    <%= f.label :completed %>
     <%= f.select :completed, [['No','NO'],['Yes','YES']] %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+  <% end %>
 <br>
 <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
 <br>
