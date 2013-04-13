@@ -41,7 +41,7 @@
         </td>
     
 
-    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description, :task_id => tasks.id) %></td> 
+    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description, :task_id => tasks.id, :project_id => projects.id) %></td> 
     
 
     <td><%= link_to 'Delete', tasks, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' + tasks.description  } %></td>

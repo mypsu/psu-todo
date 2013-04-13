@@ -18,7 +18,7 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
   
-
+<%= @project_id %>
 <!-- Check Deps before update status  -->
   <%= f.label :status %>
 <% if @task.deps.any? %> 
@@ -52,7 +52,7 @@
 
 
 <!--add deps -->
-<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id) %>
 <br>
 
 <!-- Needs this  -->
@@ -86,13 +86,9 @@
   </ul>
 
 <% else %>
-  <p>No Dependent Tasks</p>
+
  <% end %>
 
-<p>
-  <b>Completed:</b>
-  <%= @task.completed %>
-</p>
 
 <!-- Needed By  -->
 
