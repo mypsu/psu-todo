@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(:version => 20130406144514) do
     t.datetime "updated_at", :null => false
   end
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f409c7a9d4fa72d754d4b00294d5f2e513899a9a
   create_table "tasks", :force => true do |t|
     t.string   "description"
     t.string   "completed"
