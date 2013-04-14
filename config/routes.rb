@@ -25,6 +25,8 @@ PsuTodo::Application.routes.draw do
   match '/login', to: 'sessions#new'
   match '/logout', to: 'sessions#destroy'
 
+  match "projects/:id/report", :to => "projects#report"
+
   get "static_pages/report"
 
 

@@ -10,6 +10,7 @@
     <th>User_Name</th>
     <th>Edit</th>
     <th>Delete</th>
+	<th>Report</th>
   </tr>
  </thead>
   <tbody>
@@ -22,6 +23,7 @@
     <td><%= project.user.username %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure you want to delete project: ' + project.name  } %></td>
+    <td><a href="/projects/<%= project.id %>/report">Report</a></td>
   </tr>
 <% end %>
 </tbody>
