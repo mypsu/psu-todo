@@ -12,10 +12,12 @@
       <% projects.tasks.each do |tasks| %>          
       <tr>
         <td><%=link_to projects.name, projects%></td>
-          <td><%=link_to tasks.description,  edit_task_path(tasks) %></td>
+          <td><%=link_to tasks.description,  edit_task_path([tasks], :project => projects) %></td>
+
+
           <td>
             <%= tasks.status %></td>
-<!-- task dependency-->
+<!-- task dependency-->-
           <td>
               <% tasks.deps.each do |td| %>
                   <% if td.status == 'FINISH' %>
@@ -31,11 +33,13 @@
         </td>
           <td>
               <% tasks.inverse_deps.each do |itd| %>
-              <% if itd.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                  <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %>  
                     <%= itd.description %></font><br>
               <%end %>
         </td>
@@ -71,21 +75,25 @@
 
 <!-- task dependency-->
               
-              <% tasks.deps.each do |td| %>
-                <% if td.completed == 'YES' %>
-                      <font color="green">
-                <% else %>
-                      <font color="red">
-                <%end %> 
+        <% tasks.deps.each do |td| %>
+                 <% if td.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif td.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
                       Has Dependency: <%= td.description %></font><br>
                 <%end %>
 
               <% tasks.inverse_deps.each do |itd| %>
-              <% if itd.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                 <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
                     Is Needed By <%= itd.description %></font><br>
               <%end %>
           </ul>
@@ -93,11 +101,4 @@
       <% end %>            
 
 <% end %> 
-
-
-<%= link_to 'New Task', new_task_path %>
-
-
-
-
 

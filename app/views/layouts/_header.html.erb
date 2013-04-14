@@ -10,6 +10,7 @@
           <li><%= link_to "Home",    '/home'  %></li>
 
            <% if !signed_in? %>
+
               <li><%= link_to "Project",    '/projects' %></li>
               <li><%= link_to "Other Users",    '/users' %></li>
               <li><%= link_to "User", current_user %></li>

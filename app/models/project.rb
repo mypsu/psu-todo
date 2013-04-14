@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   #attr_accessible :user_id, :description, :end_date, :name, :owner, :start_date, :taskList, :projects_attributes
   belongs_to :user
   validates :user_id, presence: true
-  validates :name, presence: true, length: {minimum: 3}
+  validates :name, presence: true,  uniqueness: true, length: {minimum: 3}
 
   has_many :tasks, dependent: :destroy
 

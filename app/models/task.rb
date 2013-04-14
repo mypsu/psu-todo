@@ -3,6 +3,8 @@ class Task < ActiveRecord::Base
   validates :description, :length => {:maximum => 300}, length: {minimum: 3}
   validates :project_id, presence: true
 
+  validates :description, presence: true, uniqueness: true
+
   belongs_to :project
   has_one :user, :through => :project
 
