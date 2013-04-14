@@ -3,7 +3,7 @@
     <div class="container">
       <nav>
 
-<%= link_to image_tag("psu.jpg", alt: "Penn State", :size => "100x90"), '/home' %> <b>PSU Task Management To-Do's</b> 
+<%= link_to image_tag("psu.jpg", alt: "Penn State", :size => "100x90"), '/home' %> <b>PSU Task Management</b> 
 
         <ul class="nav pull-right">
 

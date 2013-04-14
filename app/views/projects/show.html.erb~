@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Project:
+  <%= @project.name %></h1>
+
+<!-- Figure out percentage -->
+ <% @user = current_user  %>
+ <% if @user.tasks.any? 
+      @total = @user.tasks.count.to_f
+      @finish = @user.tasks.where(:status => 'FINISH').count.to_f
+
+  %>
+        <b><%= number_with_precision((@finish/@total)*100, :precision => 0)%></b>% Complete (Task Finish/Total Task) 
+    <% end %>
+
+<table id="users">
+<thead>
+<tr>
+  <th>Project
+    </th>
+   <th>Task
+    </th>
+   <th>Task Status
+    </th>
+    <th>Depends On
+    </th>
+   <th>Needed
+    </th>
+  </tr>
+</thead>
+<tbody>
+<!-- task-->
+
+
+      <% @project.tasks.each do |tasks| %>          
+      <tr><td><%= link_to @project.name, edit_project_path(@project)%></td>
+
+          
+          <td><%=link_to tasks.description,  edit_task_path([tasks], :project => @project) %></td>
+
+          <td><%= tasks.status %></td>
+<!-- task dependency-->
+          <td>
+              <% tasks.deps.each do |td| %>
+              <% if td.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= td.description %></font><br>
+              <%end %>
+        </td>
+          <td>
+              <% tasks.inverse_deps.each do |itd| %>
+              <% if itd.completed == 'YES' %>
+                    <font color="green">
+              <% else %>
+                    <font color="red">
+              <%end %> 
+                    <%= itd.description %></font><br>
+              <%end %>
+        </td>
+
+
+        </tr>
+      <% end %>            
+
+</tbody>
+</table>
+
+	+<b>Edit History:</b>
+	<%=current_user.username + ' your last update was ' %>
+	+<%=  time_ago_in_words(current_user.updated_at) %>
+	+<%  end%>
+
+<br>
+
+
+<%= link_to 'Add Task', new_task_path(:project => @project.id) %> |
+<%= link_to 'Edit Project', edit_project_path(@project) %> |
+<%= link_to 'New Project', new_project_path %>|
+<%= link_to 'Return Back', projects_path %>
+

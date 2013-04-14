@@ -140,7 +140,7 @@ Projects will also be able to be updated with pertinent details by the Project M
 <table border="0">
 <tr>
 <td>
-<br>
+br>
 
        <%= form_for(:session, url: sessions_path) do |f| %>
 
