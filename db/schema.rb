@@ -34,18 +34,7 @@ ActiveRecord::Schema.define(:version => 20130406144514) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "taskdeps", :force => true do |t|
-    t.integer  "parent_id"
-    t.integer  "child_id"
-    t.string   "create"
-    t.string   "destroy"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
-  add_index "taskdeps", ["child_id"], :name => "index_taskdeps_on_child_id"
-  add_index "taskdeps", ["parent_id", "child_id"], :name => "index_taskdeps_on_parent_id_and_child_id", :unique => true
-  add_index "taskdeps", ["parent_id"], :name => "index_taskdeps_on_parent_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "description"
