@@ -3,6 +3,15 @@
 <h1>Project:
   <%= @project.name %></h1>
 
+<!-- Figure out percentage -->
+ <% @user = current_user  %>
+ <% if @user.tasks.any? 
+      @total = @user.tasks.count.to_f
+      @finish = @user.tasks.where(:status => 'FINISH').count.to_f
+
+  %>
+        <b><%= number_with_precision((@finish/@total)*100, :precision => 0)%></b>% Complete (Task Finish/Total Task) 
+    <% end %>
 
 <table id="users">
 <thead>
@@ -21,6 +30,8 @@
 </thead>
 <tbody>
 <!-- task-->
+
+
       <% @project.tasks.each do |tasks| %>          
       <tr><td><%= link_to @project.name, edit_project_path(@project)%></td>
 

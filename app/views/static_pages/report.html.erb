@@ -16,8 +16,9 @@
     <% end %>
  <% if @user.tasks.any? %>
       <h1># of Total Tasks (<%= @user.tasks.count %>)</h1>
-      <h3># Completed Tasks (<%= @user.tasks.where(:completed => 'YES').count %>)</h3>
-      <h3># Not Completed Tasks (<%= @user.tasks.where(:completed => 'NO').count %>)</h3>
+      <h3># Tasks Completed (<%= @user.tasks.where(:status => 'FINISH').count %>)</h3>
+      <h3># Tasks Not Started (<%= @user.tasks.where(:status => 'NOTSTARTED').count %>)</h3>
+      <h3># Not Completed Tasks (<%= @user.tasks.where(:status => 'STARTED').count %>)</h3>
 
     <% else %>
   <p>no tasks</p>

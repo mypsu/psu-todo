@@ -8,6 +8,7 @@
 <tbody>
 <% current_user.projects.each do |projects| %>
 
+<% @project = projects %>
 <!-- task-->
       <% projects.tasks.each do |tasks| %>          
       <tr>
@@ -17,7 +18,7 @@
 
           <td>
             <%= tasks.status %></td>
-<!-- task dependency-->-
+<!-- task dependency-->
           <td>
               <% tasks.deps.each do |td| %>
                   <% if td.status == 'FINISH' %>
@@ -58,7 +59,8 @@
 </tbody>
 </table>
 <br />
-
+<br />
+<%= link_to 'Create New Task', new_task_path(:project => @project) %> 
 <h1> Activity </h1>
 
 <% current_user.projects.each do |projects| %>
