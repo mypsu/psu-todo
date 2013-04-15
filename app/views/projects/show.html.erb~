@@ -43,7 +43,7 @@
           <td><%= tasks.status %></td>
            <td>
      <!-- task assignment-->     
-     			<% tasks.user.usernames %>
+     			<%= tasks.user.username %>
            </td>
            
            

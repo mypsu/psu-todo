@@ -1,0 +1,55 @@
+
+<h3>Tasks </h3>
+
+<p>
+  <b>Project Name:</b>
+  <%= @task.project.name %>
+<br>
+  <b>Task Description:</b>
+<%= link_to @task.description, edit_task_path(@task) %>
+<br>
+  <b>Task Comments:</b>
+  <%= @task.comments %>
+<br>
+  <b>Task Status:</b>
+  <%= @task.status %>
+
+<% if @task.deps.any? %>
+	<p># of dependent tasks:<%=   + @task.deps.count %></p>
+	<ul>
+	  <% for deps in @task.deps %>
+	    <li>
+	    <%= deps.description %>
+		(<%= link_to "remove", deps, :method => :delete %>)
+	</li>
+	  <% end %>
+	</ul>
+
+<% else %>
+	<p>No Dependent Tasks</p>
+ <% end %>
+
+<p>
+  <b>Completed:</b>
+  <%= @task.completed %>
+</p>
+
+
+<% if @task.inverse_deps.any? %>
+	<h3><%=@task.inverse_deps.count %>
+	other Task(s) Relies on this Task: </h3>
+	<ul>
+	  <% for tasks in @task.inverse_deps %>
+	    <li><%=h tasks.description %></li>
+	  <% end %>
+	</ul>
+<% else %>
+	<h3>No other Tasks Rely on this Task: </h3>
+<% end %>
+
+<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id,) %>|
+<%= link_to "Edit Task ", edit_task_path(@task) %>|
+<!--<%= link_to 'List Tasks', tasks_path %>-->
+<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' } %>
+
+<%= link_to 'Return to Project', projects_path %>

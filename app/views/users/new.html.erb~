@@ -1,5 +1,5 @@
 <h1>Register New User</h1>
 
 <%= render 'form' %>
-dsdasd
+
 <%= link_to 'Back', home_path %>

@@ -1,0 +1,27 @@
+<h1>Listing Task Dependents</h1>
+
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Dep</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @taskdependents.each do |taskdependent| %>
+  <tr>
+    <td><%= taskdependent.task_id %></td>
+    <td><%= taskdependent.dep_id %></td>
+    <td><%= link_to 'Show', taskdependent %></td>
+    <td><%= link_to 'Edit', edit_taskdependent_path(taskdependent) %></td>
+    <td><%= link_to 'Destroy', taskdependent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+    
+    
+<br />
+
+<%= link_to 'New Taskdependent', new_taskdependent_path %>

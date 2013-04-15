@@ -1,0 +1,82 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+$blue: #000080;
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+a:hover {
+     color: #00438a;
+     text-decoration: underline;
+}
+
+a {
+     color: #00438a;
+    text-decoration: underline;
+    font-size: 1em;
+    font-weight: normal;
+    color: $grayMediumLight;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 2em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+    color: $blue;
+  background-color:$grayMediumLight;
+}
+
+h2 {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayMediumLight;
+}
+
+h3 {
+  font-size: 1.3em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $blue;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}

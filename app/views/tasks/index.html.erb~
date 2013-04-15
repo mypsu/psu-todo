@@ -1,9 +1,4 @@
-<% provide(:title, "Register") %>
-
-
-<% if !signed_in? %>
-
-	<h1><B>PSU Projects and Tasks</B></h1>
+<h1>Listing task</h1>
 
 <table id="users">
 <thead>
@@ -13,11 +8,14 @@
 <tbody>
 <% current_user.projects.each do |projects| %>
 
+<% @project = projects %>
 <!-- task-->
       <% projects.tasks.each do |tasks| %>          
       <tr>
         <td><%=link_to projects.name, projects%></td>
-          <td><%=link_to tasks.description,  edit_task_path(tasks) %></td>
+          <td><%=link_to tasks.description,  edit_task_path([tasks], :project => projects) %></td>
+
+
           <td>
             <%= tasks.status %></td>
 <!-- task dependency-->
@@ -36,11 +34,13 @@
         </td>
           <td>
               <% tasks.inverse_deps.each do |itd| %>
-              <% if itd.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                  <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %>  
                     <%= itd.description %></font><br>
               <%end %>
         </td>
@@ -56,20 +56,12 @@
       <% end %>            
 
 <% end %> 
-
-
-
-
-
 </tbody>
 </table>
-<br>
-<br>
-<%= link_to 'Create a New Project', new_project_path %>
-
-
-
-<h1> Activity Feed</h1>
+<br />
+<br />
+<%= link_to 'Create New Task', new_task_path(:project => @project) %> 
+<h1> Activity </h1>
 
 <% current_user.projects.each do |projects| %>
 <!-- task-->
@@ -80,76 +72,35 @@
                Updated: <%= time_ago_in_words(tasks.updated_at) %> by 
               <%= current_user.username %>
                 </ul>
+                <ul> Comment: <%= tasks.comments%></ul>
            <ul>
 
 <!-- task dependency-->
               
-              <% tasks.deps.each do |td| %>
-                <% if td.completed == 'YES' %>
-                      <font color="green">
-                <% else %>
-                      <font color="red">
-                <%end %> 
+        <% tasks.deps.each do |td| %>
+                 <% if td.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif td.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
                       Has Dependency: <%= td.description %></font><br>
                 <%end %>
 
               <% tasks.inverse_deps.each do |itd| %>
-              <% if itd.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                 <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
                     Is Needed By <%= itd.description %></font><br>
               <%end %>
           </ul>
           </ul>
       <% end %>            
 
-<% end %>
+<% end %> 
 
-
-<% else %>
-
-
-<br><br>
-<p>
-<h3> <B>Welcome  to the PSU Task Management To-Do Application</B></h3>
-<center><img src="/assets/myborder.png" /></center>
-<br>
-
-The PSU Task Management To-Do System is a collaborative web application that will provide a one-stop shop for managing your To Do Lists for your project. 
-This application will allow users to:
-<ul>
-<li>Create Projects</li>
-<li>Assign Users to a Project</li>
-<li>Assign Tasks and Subtasks</li>
-<li>Assign Timelines to a project</li>
-<li>Add Notes</li>
-<li>Assign a Status</li>
-<li>View Reports (Projects, Users)</li>
-</ul>
-</p>
-
-Projects will also be able to be updated with pertinent details by the Project Manager or by a person assigned to a task in the project.
-<p><br>
-<center><img src="/assets/myborder.png" /></center>
-
-<p>
-
-	   <%= form_for(:session, url: sessions_path) do |f| %>
-	   
-<br>
-
-
-       <%= form_for(:session, url: sessions_path) do |f| %>
-       
-<center>
-          <B>LOGIN: </B>     Email: <%= f.text_field :username %>
-          Password: <%= f.password_field :password %>
-          <%= f.submit "Log In" %>
-        <% end %>
-         <p><B>Register if you are a new User: </B><%= link_to "Register", register_path %></p>
-
-</center>
-<% end %>
-<% end %>

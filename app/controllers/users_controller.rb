@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.find(rams[:id])
     @projects = @user.projects.paginate(page: params[:page])
     @tasks = @user.tasks.paginate(page: params[:page])
 

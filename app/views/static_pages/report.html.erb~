@@ -1,0 +1,53 @@
++<%  if !current_user.nil? 
+    @user=current_user
+  %>
+
+	+<b>Edit History:</b>
+	<%=current_user.username + ' your last update was ' %>
+	+<%=  time_ago_in_words(current_user.updated_at) %>
+
+
+	 <% if current_user.projects.any? 
+	 	%>
+      <h1># of Projects (<%= @user.projects.count %>)</h1>
+
+
+    <% else %>
+  <p>no projects</p>
+    <% end %>
+ <% if @user.tasks.any? %>
+      <h3># of Total Tasks (<%= @user.tasks.count %>)</h3>
+	  <center>
+	  <table>
+	  <tr>
+<!--	    <td style="text-align: right; font-weight: bold; background-color: #eaeaff;" rowspan=2>Incomplete Tasks:&nbsp;</td>
+	    <td style="font-weight: bold; background-color: #eaeaff;" rowspan=2><%= @user.tasks.where(:completed => 'NO').count %></td>
+		<td style="font-weight: bold; background-color: #eaeaff;" width="50px">&nbsp;</td>
+-->
+	    <td style="text-align: right; font-weight: bold; background-color: #eaeaff;">Assigned/Unstarted Tasks:&nbsp;</td>
+	    <td style="font-weight: bold; background-color: #eaeaff;"><%= @user.tasks.where(:status => 'NOTSTARTED').count %></td>
+	  </tr>
+	  <tr>
+<!--		<td style="font-weight: bold; background-color: #eaeaff;" width="50px">&nbsp;</td>
+-->
+	    <td style="text-align: right; font-weight: bold; background-color: #eaeaff;">Started Tasks:&nbsp;</td>
+	    <td style="font-weight: bold; background-color: #eaeaff;"><%= @user.tasks.where(:status => 'STARTED').count %></td>
+      </tr>
+	  <tr>
+<!--	    <td style="text-align: right; font-weight: bold; background-color: #ddddff;">Complete Tasks:&nbsp;</td>
+	    <td style="font-weight: bold; background-color: #ddddff;"><%= @user.tasks.where(:completed => 'YES').count %></td>
+		<td style="font-weight: bold; background-color: #ddddff;" width="50px">&nbsp;</td>
+-->
+	    <td style="text-align: right; font-weight: bold; background-color: #ddddff;">Finished Tasks:&nbsp;</td>
+	    <td style="font-weight: bold; background-color: #ddddff;"><%= @user.tasks.where(:status => 'FINISH').count %></td>
+      </tr>
+      </table>
+      </center>
+      <br>	  
+
+<!--      <h3>Variance (<%= (@user.tasks.where(:completed => 'YES').count - @user.tasks.where(:status => 'FINISH').count).abs %>)</h3>
+-->
+    <% else %>
+  <p>no tasks</p>
+    <% end %>
+<%  end%>

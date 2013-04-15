@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :destroy]
-before_filter :correct_user, only: [:edit, :update, :destroy]
+	before_filter :correct_user, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -16,7 +16,7 @@ before_filter :correct_user, only: [:edit, :update, :destroy]
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.find(rams[:id])
     @projects = @user.projects.paginate(page: params[:page])
     @tasks = @user.tasks.paginate(page: params[:page])
 

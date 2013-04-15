@@ -1,0 +1,94 @@
+<% provide(:title, @user.username) %>
+
+
+<p>
+  <h1>User:
+  <%= link_to @user.username, edit_user_path(@user) %>
+  </h1>
+
+</p>
+
+
+
+
+<table id="users">
+<thead>
+<tr>
+  <th>Project</th>   <th>Task</th><th>Task Status</th><th>Waiting For</th><th>Needed By</th><th>Add Dependency</th><th>Delete Task</th>  </tr>
+</thead>
+<tbody>
+<% current_user.projects.each do |projects| %>
+
+<!-- task-->
+      <% projects.tasks.each do |tasks| %>          
+      <tr>
+        <td><%=link_to projects.name, projects%></td>
+          <td><%=link_to tasks.description,  edit_task_path(tasks) %></td>
+          <td>
+            <%= tasks.status %></td>
+<!-- task dependency-->-
+          <td>
+              <% tasks.deps.each do |td| %>
+                  <% if td.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif td.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
+
+                    <%= td.description %></font><br>
+              <%end %>
+        </td>
+          <td>
+              <% tasks.inverse_deps.each do |itd| %>
+                 <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
+                    <%= itd.description %></font><br>
+              <%end %>
+        </td>
+    
+
+    <td><%= link_to 'Add dependency', new_taskdependent_path(:dep => tasks.description, :task_id => tasks.id, :project_id => projects.id) %></td> 
+    
+
+    <td><%= link_to 'Delete', tasks, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' + tasks.description  } %></td>
+
+
+        </tr>
+      <% end %>            
+
+<% end %> 
+</tbody>
+</table>
+
+
+
+
+<!--
+ <% if @user.projects.any? %>
+      <h1># of Projects (<%= @user.projects.count %>)</h1>
+	<%= render @projects %>	
+	<%= will_paginate @projects %>	
+    <% else %>
+	<h1>no projects</h1>
+    <% end %>
+
+
+ <% if @user.tasks.any? %>
+      <h1># of Tasks (<%= @user.tasks.count %>)</h1>
+    <%= render @tasks %> 
+    <% else %>
+  <h1>no tasks</h1>
+    <% end %>
+
+  -->
+<br>
+<%= link_to 'Create New Project', new_project_path %> |
+<%= link_to 'Quickly Edit Projects', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
