@@ -5,9 +5,9 @@
 
 <!-- Figure out percentage -->
  <% @user = current_user  %>
- <% if @user.tasks.any? 
-      @total = @user.tasks.count.to_f
-      @finish = @user.tasks.where(:status => 'FINISH').count.to_f
+ <% if @project.tasks.any? 
+      @total = @project.tasks.count.to_f
+      @finish = @project.tasks.where(:status => 'FINISH').count.to_f
 
   %>
         <b><%= number_with_precision((@finish/@total)*100, :precision => 0)%></b>% Complete (Task Finish/Total Task) 

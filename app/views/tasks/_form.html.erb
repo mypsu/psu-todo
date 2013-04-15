@@ -13,19 +13,21 @@
 <%   params[:project] %>
 
 
-<table border="0">
+<table border="0" width="100%">
 <tr>
 <td><b>Project: </b></td>
-<td><%= f.collection_select(:project_id,  Project.all, :id, :name, :selected => params[:project]) %></td>
+<td width="100%"><%= f.collection_select(:project_id,  Project.all, :id, :name, :selected => params[:project]) %></td>
 </tr>
+<tr>
 <td><b>Description: </b></td>
-<td><%= f.text_field :description %></td>
+<td><%= f.text_area :description, :cols => "60", :rows => "4" %></td>
 </tr>
+<tr>
 <td><b>User: </b></td>
 <td><% @task.user_id %><%= f.collection_select(:user_id,  User.all, :id, :username) %></td>
 </tr>
-</table> 
-<td><b>Status:    </b></td>
+<tr>
+<td><b>Status: </b></td>
 <td><%= @project_id %>
 <!-- Check Deps before update status  -->
 
@@ -43,24 +45,26 @@
       <%= f.select :status, [['Not Started','NOTSTARTED'],['Started','STARTED'],['Finish','FINISH']] %>
 <% end %>
 </td>
-</tr><br>
-<td><b>Comments: </b></td>
-<td> <%= f.text_field :comments %></td>
 </tr>
-</table> 
-
-
-
-  </div>
+<tr>
+<td><b>Comments: </b></td>
+<td> <%= f.text_area :comments, :cols => "60", :rows => "6" %></td>
+</tr>
+<tr>
+<td></td>
+<td>
   <div class="actions">
     <%= f.submit %>
   </div>
+</td>
+</tr>
+</table> 
   <% end %>
 
 
 
 <!--add deps -->
-<%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id) %>
+<!-- < % = link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id) % > -->
 <br>
 
 <!-- Needs this  -->
