@@ -19,8 +19,8 @@
 <td width="100%"><%= f.collection_select(:project_id,  Project.all, :id, :name, :selected => params[:project]) %></td>
 </tr>
 <tr>
-<td><b>Description: </b></td>
-<td><%= f.text_area :description, :cols => "60", :rows => "4" %></td>
+<td><b>Task Name: </b></td>
+<td><%= f.text_field :description, :cols => "60", :rows => "4" %></td>
 </tr>
 <tr>
 <td><b>User: </b></td>
@@ -64,8 +64,9 @@
 
 
 <!--add deps -->
-<!-- < % = link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id) % > -->
+ <%= link_to 'Add dependency', new_taskdependent_path(:dep => @task.description, :task_id => @task.id) %> 
 <br>
+<%= link_to 'Delete Task', @task, method: :delete, data: { confirm: 'Are you sure you want to delete task: ' } %>
 
 <!-- Needs this  -->
 <% if @task.deps.any? %>
