@@ -88,5 +88,7 @@ class ProjectsController < ApplicationController
  
   def report
     @project = Project.find(params[:id])
+    @pie = Igs::PieChart.new('Task Status',200,0.4,'body',{'Not Started'=>@project.tasks.where(:status => 'NOTSTARTED').count,'Started'=>@project.tasks.where(:status => 'STARTED').count,'Finished'=>@project.tasks.where(:status => 'FINISH').count})
+
   end
 end

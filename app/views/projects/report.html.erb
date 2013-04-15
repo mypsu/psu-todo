@@ -10,7 +10,7 @@
       @finish = @project.tasks.where(:status => 'FINISH').count.to_f
 
   %>
-        <b><center><%= number_with_precision((@finish/@total)*100, :precision => 0)%></b>% Complete (Task Finish/Total Task)</center>
+        <center><b><%= number_with_precision((@finish/@total)*100, :precision => 0)%></b>% Complete (Task Finish/Total Task)</center>
       <br>
 	  <center>
 	  <table>
@@ -40,14 +40,17 @@
       </center>
 <!--  <h3>Variance (<%= (@project.tasks.where(:completed => 'YES').count - @project.tasks.where(:status => 'FINISH').count).abs %>)</h3>
 -->
-      <br>	  
+      <br>
     <% else %>
   <p>no tasks</p>
     <% end %>
 <br>
 
-
 <%= link_to 'Add Task', new_task_path(:project => @project.id) %> |
 <%= link_to 'Edit Project', edit_project_path(@project) %> |
 <%= link_to 'Return Back', projects_path %>
+<br>
+<br>
 
+
+	      <%= raw @pie.render %>

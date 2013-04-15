@@ -60,6 +60,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.1)
+    d3_rails (3.1.4)
+      railties (>= 3.1.0)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -85,6 +87,8 @@ GEM
       rspec (~> 2.11)
     hike (1.2.1)
     i18n (0.6.4)
+    igs_pie_chart (0.0.11)
+      d3_rails (>= 3.0.6)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -209,6 +213,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.1.0)
   faker
   guard-rspec
+  igs_pie_chart
   jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails

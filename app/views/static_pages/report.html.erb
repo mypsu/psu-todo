@@ -54,6 +54,8 @@
 
 <!--      <h3>Variance (<%= (@user.tasks.where(:completed => 'YES').count - @user.tasks.where(:status => 'FINISH').count).abs %>)</h3>
 -->
+      <br>
+	      <%= raw @pie.render %>
     <% else %>
   <p>no tasks</p>
     <% end %>

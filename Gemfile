@@ -30,6 +30,8 @@ gem 'jquery-ui-rails'
 gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git'
 #gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+gem 'igs_pie_chart'
+
 group :development, :test do
 #	gem 'pg'
 	gem 'sqlite3', '1.3.7'
