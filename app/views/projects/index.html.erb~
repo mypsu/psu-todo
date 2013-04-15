@@ -1,35 +1,38 @@
-<h1>Listing Users</h1>
+<h1>Projects</h1>
 
-<table id="users">
-  <thead>
+<table id="projects" >
+ <thead> 
   <tr>
-    <th>Username</th>
-    <th></th>
-     <th></th>
+    <th>Project Name</th>
+    <th>Description</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>User_Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+	<th>Report</th>
   </tr>
  </thead>
- <tbody>
-<% @users.each do |user| %>
+  <tbody>
+<% @projects.each do |project| %>
   <tr>
-    <td><%= link_to user.username, user %></td>
-
-    <% if current_user == user  %>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-    <% else %>
-      <td></td><td></td>
-    <% end %>
-
-
+    <td><%= link_to project.name, project %></td>
+    <td><%= project.description %></td>
+    <td><%= project.start_date %></td>
+    <td><%= project.end_date %></td>
+    <td><%= project.user.username %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure you want to delete project: ' + project.name  } %></td>
+    <td><a href="/projects/<%= project.id %>/report">Report</a></td>
   </tr>
 <% end %>
-   </tbody>
-
+</tbody>
 </table>
 
-
 <br />
+
+<%= link_to 'Create a New Project', new_project_path %>
+
 
 <h1> Activity </h1>
 
@@ -47,13 +50,13 @@
 <!-- task dependency-->
               
               <% tasks.deps.each do |td| %>
-                 <% if td.status == 'FINISH' %>
+                     <% if td.status == 'FINISH' %>
                         <font color="green">
                   <% elsif td.status == 'STARTED' %>
                         <font color="blue">
                   <% else %>
                         <font color="red">
-                  <%end %> 
+                  <%end %>  
                       Has Dependency: <%= td.description %></font><br>
                 <%end %>
 
@@ -72,6 +75,3 @@
       <% end %>            
 
 <% end %>
-
-
-

@@ -3,7 +3,7 @@
 
 <% if !signed_in? %>
 
-	<h1>Welcome to the PSU Task Management To-Do Application</h1>
+	<h1><B>PSU Task Management To-Do's</B></h1>
 
 <table id="users">
 <thead>
@@ -131,30 +131,25 @@ This application will allow users to:
 </p>
 
 Projects will also be able to be updated with pertinent details by the Project Manager or by a person assigned to a task in the project.
+<p><br>
+<center><img src="/assets/myborder.png" /></center>
 
-<br>
 <p>
 
 	   <%= form_for(:session, url: sessions_path) do |f| %>
 	   
-<table border="0">
-<tr>
-<td>
-br>
+<br>
+
 
        <%= form_for(:session, url: sessions_path) do |f| %>
-
-          <%= f.label :email %>
-          <%= f.text_field :username %>
-
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-
+       
+<center>
+          <B>LOGIN: </B>     Email: <%= f.text_field :username %>
+          Password: <%= f.password_field :password %>
           <%= f.submit "Log In" %>
         <% end %>
+         <p><B>Register if you are a new User: </B><%= link_to "Register", register_path %></p>
 
-<p>OR </p>
-<p>Register if you are a new User <%= link_to "Register", register_path %></p>
-
+</center>
 <% end %>
 <% end %>

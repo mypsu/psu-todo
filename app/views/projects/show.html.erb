@@ -22,6 +22,8 @@
     </th>
    <th>Task Status
     </th>
+    <th>Assigned To
+    </th>
     <th>Depends On
     </th>
    <th>Needed
@@ -39,6 +41,13 @@
           <td><%=link_to tasks.description,  edit_task_path([tasks], :project => @project) %></td>
 
           <td><%= tasks.status %></td>
+           <td>
+     <!-- task assignment-->     
+     			<%= tasks.user.username %>
+           </td>
+           
+           
+           
 <!-- task dependency-->
           <td>
               <% tasks.deps.each do |td| %>

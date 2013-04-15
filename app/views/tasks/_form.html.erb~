@@ -26,7 +26,8 @@
 </tr>
 </table> 
 <td><b>Status:    </b></td>
-<td><%= @project_id %>
+<td>
+<%= @project_id %>
 <!-- Check Deps before update status  -->
 
 <% if @task.deps.any? %> 
@@ -35,6 +36,7 @@
               <% @nofinish = 1%>
             <% end %>
     <% end %>
+  
 <% end %>
 <% if @nofinish==1 %> 
     <font color ="red">Finish Dependencies First, Before Marking Finish</font><br>
