@@ -11,6 +11,8 @@
   <th>Project</th>   <th>Task</th><th>Task Status</th><th>Waiting For</th><th>Needed By</th><th>Add Dependency</th><th>Delete Task</th>  </tr>
 </thead>
 <tbody>
+
+<%  if !current_user.nil? %>
 <% current_user.projects.each do |projects| %>
 
 <!-- task-->
@@ -56,7 +58,7 @@
       <% end %>            
 
 <% end %> 
-
+<% end %> 
 
 
 
