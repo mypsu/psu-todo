@@ -34,6 +34,7 @@ gem 'igs_pie_chart'
 
 group :development, :test do
 #	gem 'pg'
+#       gem 'pg', '0.12.2'
 	gem 'sqlite3', '1.3.7'
 	gem 'rspec-rails'
   gem 'guard-rspec'

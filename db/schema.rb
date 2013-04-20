@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414233554) do
+ActiveRecord::Schema.define(:version => 20130420164915) do
 
   create_table "projects", :force => true do |t|
     t.string   "owner"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(:version => 20130414233554) do
 
   create_table "taskdependents", :force => true do |t|
     t.integer  "task_id"
-    t.string   "dep_id"
+    t.integer  "dep_id",     :limit => 255
     t.string   "create"
     t.string   "destroy"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "tasks", :force => true do |t|
