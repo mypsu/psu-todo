@@ -51,21 +51,25 @@
 <!-- task dependency-->
           <td>
               <% tasks.deps.each do |td| %>
-              <% if td.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                  <% if td.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif td.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %> 
                     <%= td.description %></font><br>
               <%end %>
         </td>
           <td>
               <% tasks.inverse_deps.each do |itd| %>
-              <% if itd.completed == 'YES' %>
-                    <font color="green">
-              <% else %>
-                    <font color="red">
-              <%end %> 
+                  <% if itd.status == 'FINISH' %>
+                        <font color="green">
+                  <% elsif itd.status == 'STARTED' %>
+                        <font color="blue">
+                  <% else %>
+                        <font color="red">
+                  <%end %>
                     <%= itd.description %></font><br>
               <%end %>
         </td>

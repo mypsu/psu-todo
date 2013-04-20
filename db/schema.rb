@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130420164915) do
   create_table "taskdependents", :force => true do |t|
     t.integer  "task_id"
     t.integer  "dep_id",     :limit => 255
+    t.string   "create"
+    t.string   "destroy"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
