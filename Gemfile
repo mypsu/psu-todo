@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#gem 'safe_attributes'
+gem 'safe_attributes'
 gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.3'
