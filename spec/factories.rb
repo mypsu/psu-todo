@@ -1,4 +1,4 @@
-require 'factory_girl'
+#require 'factory_girl'
 
 FactoryGirl.define do 
 	factory :user do
@@ -7,29 +7,31 @@ FactoryGirl.define do
   end
 end
 
-FactoryGirl.define :project do 
+FactoryGirl.define do 
 	factory :project do
-	user_id "123"
-  	name "testproject1"
- end
+		user_id "123"
+  		name "testproject1"
+ 	end
 end
 
-FactoryGirl.define :invalid_project do
+FactoryGirl.define do
 	factory :project do
 		user_id "999"
 		name nil
 	end		
 end
 
-FactoryGirl.define :task do
+FactoryGirl.define do
 	factory :task do
-	project_id "22"
-	description "task Test"
- end
+		project_id "22"
+		description "task Test"
+ 	end
+end
 
-FactoryGirl.define :invalid_task do
+
+FactoryGirl.define do
 	factory :task do
 		project_id "88"
 		description nil
-
+		end
 end
