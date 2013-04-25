@@ -15,7 +15,7 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
-	factory :project do
+	factory :invalid_project do
 		user_id "999"
 		name nil
 	end		
@@ -30,7 +30,7 @@ end
 
 
 FactoryGirl.define do
-	factory :task do
+	factory :invalid_task do
 		project_id "88"
 		description nil
 		end
