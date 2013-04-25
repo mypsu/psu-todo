@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#gem 'safe_attributes'
+gem 'safe_attributes'
 gem 'rails', '3.2.11'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'will_paginate', '3.0.3'
@@ -33,23 +33,24 @@ gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-
 gem 'igs_pie_chart'
 
 group :development, :test do
-#	gem 'pg'
-#       gem 'pg', '0.12.2'
-	gem 'sqlite3', '1.3.7'
-	gem 'rspec-rails'
+# gem 'pg'
+  gem 'sqlite3', '1.3.7'
+  gem 'rspec-rails'
   gem 'guard-rspec'
-	gem 'capybara', '~>1.1.2'
+  gem 'capybara', '~>1.1.2'
   gem 'faker'
   gem "fabrication", "~> 2.2.0"
   gem "launchy", "~> 2.1.2"
+  gem "factory_girl_rails", "~> 4.2.1"
 end
 
 group :test do
-  gem 'factory_girl_rails', '4.1.0'
+#  gem 'factory_girl_rails', '4.1.0'
+#  gem "factory_girl_rails", "~> 4.2.1"
 end
 
 group :production do
-	gem 'pg', '0.12.2'
+  gem 'pg', '0.14.1'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
