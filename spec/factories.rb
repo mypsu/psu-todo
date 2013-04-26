@@ -1,37 +1,14 @@
-#require 'factory_girl'
-
-FactoryGirl.define do 
-	factory :user do
+FactoryGirl.define do
+  factory :user do
     username "joe@hotmail.com"
     password "abcdef"
   end
-end
-
-FactoryGirl.define do 
-	factory :project do
-		user_id "123"
-  		name "testproject1"
- 	end
-end
-
-FactoryGirl.define do
-	factory :invalid_project do
-		user_id "999"
-		name nil
-	end		
-end
-
-FactoryGirl.define do
-	factory :task do
-		project_id "22"
-		description "task Test"
- 	end
-end
-
-
-FactoryGirl.define do
-	factory :invalid_task do
-		project_id "88"
-		description nil
-		end
+  factory :task do
+    description "do taxes"
+    status "FINISH" 
+  end
+  factory :project do
+    name "2012 tax"
+    description "my project" 
+  end
 end
